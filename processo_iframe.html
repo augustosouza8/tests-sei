@@ -1,0 +1,959 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="pt-br" >
+<head >
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+      <link rel="manifest" href="favicon/sei.webmanifest">
+      <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+      <link rel="shortcut icon" href="favicon/favicon.ico">
+      <meta name="msapplication-TileColor" content="#0994dc">
+      <meta name="msapplication-config" content="favicon/browserconfig.xml">
+      <meta name="theme-color" content="#0994dc">
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="robots" content="noindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+<title>SEI - Árvore Montar</title>
+<script type="text/javascript" src="/ruxitagentjs_ICANVfhqru_10323250822043923.js" data-dtconfig="rid=RID_1123845908|rpid=1058865157|domain=mg.gov.br|reportUrl=/rb_c1d2b502-a5ce-4b72-bee2-fa6ae352c237|app=3140e01e5512e6eb|srre=favicon.png|owasp=1|featureHash=ICANVfhqru|srsr=1000|rdnt=1|uxrgce=1|cuc=41uchvpj|mel=100000|dpvc=1|md=mdcc1=a#divInfraBarraSistemaPadraoD ^rb div:nth-child(6) ^rb span|lastModification=1760107198982|tp=500,50,0|srbbv=2|agentUri=/ruxitagentjs_ICANVfhqru_10323250822043923.js"></script><link rel="shortcut icon" href="favicon/favicon.ico"><link href="/infra_css/infra-tooltip.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/infra-barra-progresso.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/infra-impressao-global.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="print" />
+<link href="/infra_css/infra-ajax.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/calendario/v2/infra-calendario.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/arvore/infra-arvore.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/mapa/infra-mapa.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/jquery/jquery-ui-1.13.2/jquery-ui.min.css?1.13.2" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/jquery/jquery-ui-1.13.2/jquery-ui.structure.min.css?1.13.2" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/jquery/jquery-ui-1.13.2/jquery-ui.theme.min.css?1.13.2" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/multiple-select/multiple-select.min.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/modal/jquery.modalLink-1.0.0.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/bootstrap/bootstrap.min.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/bootstrap/menu-bootstrap.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/infra-global-esquema-3.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/esquemas/verde_mar/infra-esquema-3.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />      
+<link href="css/infra-local-esquema-3.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<style></style><style type="text/css" >
+<!--/*--><![CDATA[/*><!--*/
+
+body{
+
+overflow:visible;
+}
+
+#header {
+margin:0 auto;
+height: 30px;
+width:100%;
+}
+
+#topmenu {
+height:20px;
+padding-top:.5em;
+}
+
+#container {
+width:100%;
+}
+
+#content {
+margin: 0 auto;
+}
+
+#divArvore {
+width:99%;
+padding-top:2px;
+}
+
+#divConsultarAndamento {
+width:99%;
+padding:1em 0.2em 1em 0.2em;
+margin-top:1em;
+border-top:.1em solid #b0b0b0;
+}
+
+#divConsultarAndamento a {
+text-decoration:none;
+font-size: .9rem;
+}
+
+#divConsultarAndamento img {
+vertical-align:middle;
+}
+
+#divRelacionados {
+width:99%;
+padding-top:1em;
+border-top:.1em solid #b0b0b0;
+}
+
+#divRelacionados label,
+#divRelacionadosParciais label,
+#divRelacionados a,
+#divRelacionadosParciais a  {
+font-size: .875rem;
+}
+
+#divRelacionados label{
+width:99%;
+}
+
+
+.divRelacionadosParcial{
+padding-left:2em;
+display:none;
+}
+
+a.ancoraRelacionadosParcial{
+padding-left:1.2em;
+text-decoration:none;
+color: black;
+}
+
+a.ancoraRelacionadosParcial:hover{
+text-decoration:underline;
+}
+
+.noVisitado {
+background-color:white;
+color:#0000cc;
+}
+
+.cardDeckRelacionado{
+  margin:5px 0;
+}
+.cardRelacionado{
+  border-color: #b0b0b0;
+  margin: 0 5px 10px 5px !important;
+  min-width: 220px;
+  max-width: 220px;  
+}
+.cardTitleRelacionado{
+  margin-bottom: 0 !important;
+}
+.cardBodyRelacionado{
+  padding: .2rem .4rem;
+}
+
+/*]]>*/-->
+</style>
+<script type="text/javascript" charset="iso-8859-1" src="js/popover/popper.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1">
+var INFRA_PATH_CSS = "/infra_css",
+    INFRA_PATH_IMAGENS = "/infra_css/imagens",
+    INFRA_PATH_JS = "/infra_js",
+    INFRA_PATH_SVG = "/infra_css/svg",
+    INFRA_LUPA_TIPO_JANELA = 2,
+    INFRA_BARRA_TIPO_JANELA = 1;
+</script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/jquery/jquery-3.7.0.min.js?3.7.0"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/jquery/jquery-ui-1.13.2/jquery-ui.min.js?1.13.2"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/multiple-select/multiple-select.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/ddslick/jquery.ddslick.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/modal/jquery.modalLink-1.0.0.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraPaginaEsquema3.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraBotaoMenu.js?4.0.12.15-2.0.18"></script>    
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraUtil.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraCookie.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraUpload.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraTabelaDinamica.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraLupas.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraSelectEditavel.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraAjax.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraTooltip.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/calendario/v2/InfraCalendario.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/arvore/InfraArvore.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/maskedpwd/MaskedPassword.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/bootstrap/bootstrap.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/bootstrap/infra-menu-bootstrap.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/touch/jquery.ui.touch-punch.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/hotkeys/jquery.hotkeys.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="js/sei.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="js/clipboard/clipboard.min.js?4.0.12.15-2.0.18"></script>
+
+<script type="text/javascript" charset="iso-8859-1" >
+<!--//--><![CDATA[//><!--
+
+//<script>
+  var objArvore = null;
+  var processandoPasta = false;
+  var processarIframe = false;
+  var no = null;
+
+  function inicializar(){
+
+    if (''=='1'){
+      parent.parent.document.location.href = 'controlador.php?acao=procedimento_controlar&acao_origem=procedimento_visualizar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=992dfbd1f1710cf2798379b7eca896efffc3c31a0830ee5225fde0bedc44277e';
+    }
+
+    document.onkeydown = navegarTeclado;
+
+    var Nos = Array();
+    var NosAcoes = Array();
+
+        
+
+
+//CA=200
+Nos[0] = new infraArvoreNo("PROCESSO","912619680",null,"controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=cfe40f95ceedb171e8bbbd92ee523f51b5cd3ea819380aad058c976c8e9ac731","ifrVisualizacao","1500.01.0377607/2025-24","RH: Estagiário","svg/processo.svg?11","svg/processo.svg?11","svg/processo.svg?11",true,true,"noVisitado",null,"noVisitado","1500.01.0377607/2025-24");
+Nos[0].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="451" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=procedimento_escolher_tipo_relacionado&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento_destino=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=63b24f702b7e5585e3bd9e603cc73d3aff35cc268c9e9e3c57ea9428c1805a6e" tabindex="451" ><img  src="svg/processo_gerar_relacionado.svg?11" alt="Iniciar Processo Relacionado" title="Iniciar Processo Relacionado"/></a><a href="controlador.php?acao=procedimento_alterar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a9c44cb4e3ccdb33cb5286e79fdc110e4cc2df2a2c2343befa90fa65fdca4f7c" tabindex="451" ><img  src="svg/processo_alterar.svg?11" alt="Consultar/Alterar Processo" title="Consultar/Alterar Processo"/></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="451" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaProcesso();" tabindex="451" ><img src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="451" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="451" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="controlador.php?acao=procedimento_atribuicao_cadastrar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=30049515479d3f33ac88329678b577775f4b1e0114c9c4a6d4acfb99b6203e34" tabindex="451" ><img  src="svg/processo_atribuir.svg?11" alt="Atribuir Processo" title="Atribuir Processo" /></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=1c9c95153d3deb22eafbaffe11961340af2afa527211feb6a0d8651014e4e647" tabindex="451" ><img  src="svg/processo_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=procedimento_duplicar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=157b15f18584a558ea02b17d6c2149ccafe585fdae2e0fba4c22a94f52bee8e2" tabindex="451" ><img  src="svg/processo_duplicar.svg?11" alt="Duplicar Processo" title="Duplicar Processo"/></a><a href="#" onclick="enviarEmailProcedimento();" tabindex="451" ><img src="svg/email_enviar.svg?11" alt="Enviar Correspondência Eletrônica" title="Enviar Correspondência Eletrônica"/><a href="controlador.php?acao=procedimento_relacionar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=cf744f5751d4cedbdcc57c3f244f496a19fb96f732d001889c803b51bf600ade" tabindex="451" ><img  src="svg/processo_relacionados.svg?11" alt="Relacionamentos do Processo" title="Relacionamentos do Processo"/></a><a href="#" onclick="incluirEmBloco();" tabindex="451" ><img src="svg/bloco_incluir_protocolo.svg?11" alt="Incluir em Bloco" title="Incluir em Bloco"/><a href="controlador.php?acao=acesso_externo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=335e6ecbdb7ed4a5244ff11b483c55bd4b1fc1c825dfa91096399d51bb58c172" tabindex="451" ><img  src="svg/acesso_externo.svg?11" alt="Gerenciar Disponibilizações de Acesso Externo" title="Gerenciar Disponibilizações de Acesso Externo"/></a><a href="controlador.php?acao=anotacao_registrar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d26a59792562cc08b0d33e3468a916438c622a0cd7a208ab44a44becdea07f0e" tabindex="451" ><img  src="svg/anotacao_cadastro.svg?11" alt="Anotações" title="Anotações" /></a><a href="controlador.php?acao=procedimento_sobrestar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a4396bf79efefe7145876c2bd76b746a675f471ee820a2d4e5571bb372b38773" tabindex="451" ><img  src="svg/processo_sobrestar.svg?11" alt="Sobrestar Processo" title="Sobrestar Processo" /></a><a href="controlador.php?acao=procedimento_anexar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=8cab246787056adad2de44516513e2ad35ce905a8222a22ac75bc556031ab20a" tabindex="451" ><img  src="svg/processo_anexar.svg?11" alt="Anexar Processo" title="Anexar Processo" /></a><a href="#" onclick="concluirProcesso();" tabindex="451" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" /><a href="controlador.php?acao=procedimento_gerar_pdf&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=1af673af2c33258dcabcb537dfc8c49fbf1b04442885ba85254cb476f578fc22" tabindex="451" ><img  src="svg/processo_gerar_pdf.svg?11" alt="Gerar Arquivo PDF do Processo" title="Gerar Arquivo PDF do Processo"/></a><a href="controlador.php?acao=procedimento_gerar_zip&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=70bfac935408e157c0990d08f47558b248c1a1cc11618252b12693924f3e7c9d" tabindex="451" ><img  src="svg/processo_gerar_zip.svg?11" alt="Gerar Arquivo ZIP do Processo" title="Gerar Arquivo ZIP do Processo"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=f656d5c07f8b41ecebfde535db25cf0920d6e2f73646dee0a63c226218238005" tabindex="451" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="controlador.php?acao=andamento_marcador_gerenciar&acao_origem=procedimento_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=3301c59234d2324c86cf99d8e456aec86b4351b00a62d44800ff8c1794de5ddb" tabindex="451" ><img  src="svg/marcador_gerenciar.svg?11" alt="Gerenciar Marcador" title="Gerenciar Marcador" /></a><a href="controlador.php?acao=controle_prazo_definir&acao_origem=procedimento_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=f0a64563ec2009dc0f064c60d0b09398d726880bdf1a58aa0b787007845cae04" tabindex="451" ><img  src="svg/controle_prazo_gerenciar.svg?11" alt="Controle de Prazo" title="Controle de Prazo" /></a><a href="#" onclick="parent.parent.document.location.href=\'controlador.php?acao=procedimento_controlar&acao_origem=procedimento_visualizar&acao_retorno=principal&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=21957596eb6c3a00a150dcb17763809ecd1f3cac4c67a045c42b9fab78f1f606#ID-912619680\';" tabindex="451" ><img  src="svg/controle_processos.svg?11" alt="Controle de Processos" title="Controle de Processos" /></a><a href="controlador.php?acao=procedimento_pesquisar&acao_origem=procedimento_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=71ecc28065bbc892d1023d374bee3879e7911a210ca7a7819616ecbbc7cf64bd" tabindex="451" ><img  src="svg/processo_pesquisar.svg?11" alt="Pesquisar no Processo" title="Pesquisar no Processo" /></a>';
+Nos[0].src = '';
+Nos[0].html = 'Processo aberto nas unidades:<br /><a alt="Centro de Automatização e Inteligência Artificial" title="Centro de Automatização e Inteligência Artificial" class="ancoraSigla">SEPLAG/AUTOMATIZAMG</a> (atribuído para <a alt="Clarisse Fidelis Silva Campos" title="Clarisse Fidelis Silva Campos" class="ancoraSigla">11726461637</a>)<br /><a alt="Escritório Central de Inovação e Automatização" title="Escritório Central de Inovação e Automatização" class="ancoraSigla">SEPLAG/ECIA</a> (atribuído para <a alt="Leidi Silva Alves" title="Leidi Silva Alves" class="ancoraSigla">14063169626</a>)<br /><br />';
+
+//CA=210
+Nos[1] = new infraArvoreNo("DOCUMENTO","913344584","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=913344584&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=75f490ce5f4569499a2fd45f50f4577b21727968ab4194b2cd2bcca6a3a3f23c","ifrVisualizacao","Email AUTORIZAÇÃO SUBGEF (123856083)","Email AUTORIZAÇÃO SUBGEF (123856083)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123856083");
+Nos[1].assinatura = '';
+Nos[1].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913344584&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e9f9af07e7242ba975cea6ac4eb7f7f58372523a4f7cd851dd89f6489a1bc043" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=913344584&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=10b62ccec23566ab4cf041a2b2e75f603761835d98a735578819cab1da79d256" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=125633261&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=3ae06308a49d67f3d106d22aadc84779c1951caad254af03c6e0e8d15ad01db3" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[1].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75910724&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=05f349fb33fe2eccfc9a67afe07e49fb45b392e6d7f013de92c5ada1ec7b117a';
+Nos[1].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75910724&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=ce7f0782ab781eacb430e89e49d19fa68b76e097b5feca8590fe4af8931000ea" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=210
+Nos[2] = new infraArvoreNo("DOCUMENTO","912619696","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=912619696&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e791bb2ff2c53c9c90f4254dd0b006378e9e4c7661ca72419cfadad71429666f","ifrVisualizacao","Comprovante _Residência_Leidi (123199249)","Comprovante _Residência_Leidi (123199249)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123199249");
+Nos[2].assinatura = '';
+Nos[2].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=912619696&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e97769a428d1cdfa08a0dd10fa9c966430e2c959dcfbd1ee0437c913a66f953d" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912619696&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=7fdd97c1d7d301a26c4241b3717946e8edd75d9d33b06430e19deee07abb0da2" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=124963040&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=508bb7246a91d8842bad419742a7bbaceae9715d88b034113075387db77d2c36" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[2].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506156&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=764d542b4f31fd9059c29d207974e683ad8fea9aef7ebd095b397044ea7217d0';
+Nos[2].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506156&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=cce8d7124acc0d37fa304d745254ce942d43cc81f97188cabde821f27f22d1a1" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=210
+Nos[3] = new infraArvoreNo("DOCUMENTO","912619697","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=912619697&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9481c4b155ee7d7aaf2cf7b26fe6e5d9211c955e894460d82f49c186bbdf3ec2","ifrVisualizacao","RG Leidi (123199250)","RG Leidi (123199250)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123199250");
+Nos[3].assinatura = '';
+Nos[3].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=912619697&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=415fa446a5906d1d1bb5d8a89afc45d976b441485f2b5c0f9e9cb303aef3eb71" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912619697&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e4495a00c4e0ecb0d53069b9dada352ec708542ccd968a5c65c00d2702cd97c2" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=124963041&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=3ba53f631f2e76b8c82d820823c71d1e8198f371fe6bc4527a5b6da2f9fb9be8" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[3].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506157&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c64ac166212a1d176285c10eebdec3ee85422cb881c3ff740a884cff83b93534';
+Nos[3].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506157&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=391069d4cbc37c5affaba2f629cfe4832525af8463b37596ea61c2d2f24a1d9a" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=210
+Nos[4] = new infraArvoreNo("DOCUMENTO","912619704","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=912619704&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=1e1772faaedb7c874f374c1742efe1ab92775b663f406edfe7fdb09845a8ac29","ifrVisualizacao","Comprovante de matricula_leidi (123199290)","Comprovante de matricula_leidi (123199290)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123199290");
+Nos[4].assinatura = '';
+Nos[4].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=912619704&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d5a59c24be0136bb2dc4a436feb44f4c5681c65dab5534a8f2fe555eb671710b" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912619704&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=8453525cc69ffd94dac06f3ecfbd5f852224eaa2a988e9aef0b2a90535c169ee" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=124963027&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=69eb0a2b66a0e210031498f62a9298acd393809580711c6ff3a95b4deb2111ff" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[4].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506158&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=94ba6b4ea072a4897690480e026bbfc94537db4e0407df089f192cc7fbc12948';
+Nos[4].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506158&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=304a1acc4026928f8d6f86f8c227af327c34ddee0972c066879f0c64e518f470" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=210
+Nos[5] = new infraArvoreNo("DOCUMENTO","912619698","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=912619698&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=49cc39c8ad53d06f449b316f7f233424f876886b85a01453c426ca14c279dce3","ifrVisualizacao","CNH -Leidi (123199251)","CNH -Leidi (123199251)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123199251");
+Nos[5].assinatura = '';
+Nos[5].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=912619698&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=be87a34b5a78b6de326328d185c74e94022abc070a232fe96da718c9422a8fa3" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912619698&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0281463df807d4d123dd0549c96060e0255a498d7b6a793531ac30a60a08ef3d" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=124963042&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e1d2cb5fe3f6e8c5d25a64f604fca8ef2c7a2ac387a05fc88a09fae0c7fae3a3" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[5].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506159&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4dad9400ecc7fabea81450957a1f5c146f86924d7c60f689690a278644e07314';
+Nos[5].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506159&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=1660b8911af2b7b7bd5d212822885ed536c4e00272799109f03525e51952e1c8" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=210
+Nos[6] = new infraArvoreNo("DOCUMENTO","912619707","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=912619707&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=ee2f655a9510a677f3019f013292dfe77ff2db2c370f5c7d502b8028e9de0d9b","ifrVisualizacao","Título titulo_de_eleitor_leidi (123199293)","Título titulo_de_eleitor_leidi (123199293)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123199293");
+Nos[6].assinatura = '';
+Nos[6].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=912619707&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=5dbfe866885ab07d1a36db0e6fef20a7da41116c090740ec60a3395ead96f179" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912619707&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=64654d303083fa24602e18fc66ce86f118e52f2460d4d4f6a8647cf2f9ecb574" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=124963030&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4f8336ffce2ec5b50513f1f58c0ac151153ae14bc3f2a8493c7fd30b06eb8d57" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[6].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506161&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0a9dd561fcefa6b504dc45b0fa766d1608b9c6a589d090333530f6effec8d870';
+Nos[6].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75506161&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e26637db1a7f0d87edfc9f6f10797bec629dd5270c8fb5d77d2f80fbc253bb01" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=210
+Nos[7] = new infraArvoreNo("DOCUMENTO","912910322","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=912910322&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=30fb7032f68c235504c45cb454a0d056abb22e684f8a0bcfde97860d1dcb440f","ifrVisualizacao","Anexo Documento Preparatório (123463429)","Anexo Documento Preparatório (123463429)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123463429");
+Nos[7].assinatura = '';
+Nos[7].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=912910322&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d3b3639569bfa8c1c90922739b8de665698bd2ef991f6f5b138f9f8a03f49b05" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912910322&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=eb49a636e5e749212f7463303e67099abb4d025087c4e2a6941565025f46f0ee" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=125231504&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=576624f702e4a6adcd918146b4a30130d6fc02e421ccbbaadf52f457a12ef1eb" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[7].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75667153&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=f702b1198c48c0f5c65e316aebcd592705bd8ae3a14d2d76322d1347aa156a84';
+Nos[7].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75667153&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=b832b1b4683ac0f29ed7856fcee63126cff596ea89c3ece8fa187124823c3f67" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=210
+Nos[8] = new infraArvoreNo("DOCUMENTO","912910701","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=912910701&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2e05a28224903482861aff7cb55457a9bce8ad2cf421f31b23f9a03a65e4f8b5","ifrVisualizacao","Anexo Atestado (123463797)","Anexo Atestado (123463797)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123463797");
+Nos[8].assinatura = '';
+Nos[8].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=912910701&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6b6bf01d2a34e94147fee8318a2de93e9ea1e6ff08eab1e76a9d11af196ef276" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912910701&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=23dda680541f7674b3965c1133619e4a377af62396914a739dcfa5fbdbfa4eb5" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=125231840&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2e42807fa1a75ab21b0d4bb7445b10e79af5008489be641306a7f89f5f9c713a" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[8].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75667351&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=80840cfa8b07f16cbd87b2b5f5d0c0ef2ad41877fc91d72ca216d8c0981c0109';
+Nos[8].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75667351&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a8701c2e6b4a6b17d50c507011c269ec517df35a11a1659e88aacd74f23491fa" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=210
+Nos[9] = new infraArvoreNo("DOCUMENTO","912913393","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=912913393&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=027fd62eaa4772acca2815412a4eaadf5c1035f0ca422424192515b62ffba570","ifrVisualizacao","Lei di_ selfie (123466099)","Lei di_ selfie (123466099)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123466099");
+Nos[9].assinatura = '';
+Nos[9].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=912913393&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=de28b1327ee512fdd42502f66b219f59e7ab8ae5347081559e3a7041338b8bfc" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912913393&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=1a3de0617b3f44d936fea1669e5ef10f3f5fb7ed0a5502a9aece84039356428d" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=125234272&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d14310cb89f131d0f7df1c286c0b5436ce01156d30254d9239dea7f4eeb2983d" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[9].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75668864&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4405cf95cccd7e922c8f4b2dc9078d5836b787540c2ba706f3a38d0af11fb44a';
+Nos[9].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75668864&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=71755f8f9d1e35f371b6f033a2f42da321d7e5560f3c2b55e94f1461af4280e3" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=210
+Nos[10] = new infraArvoreNo("DOCUMENTO","912914416","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=912914416&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=68731f17614b0b587ba1334adc0f4157ca635120b3cf780f06d34ab02d6ec926","ifrVisualizacao","Anexo dados_bancários (123467036)","Anexo dados_bancários (123467036)","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11","svg/documento_pdf.svg?11",true,true,null,null,"noVisitado","123467036");
+Nos[10].assinatura = '';
+Nos[10].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar_recebido&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=912914416&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d60cdd070eca530a6de845d249fb80ff1e03746e8b3d8f02ca8872fd08e1dcaa" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento Externo" title="Consultar/Alterar Documento Externo" /></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=912914416&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2239ecf75c14beb45dcf1bc6a52419078d43aa22c955078539d4cc8f4d8fd48f" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=125235183&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=1937b4caf0d4f3fe388edf1b536aa2b8ead0f0109b4d3d45edeca268d8fa22fa" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[10].src = 'controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75669401&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=564625627910f66bb381cd0274afcb1a6d4d80e29f01630201e412184c8aa574';
+Nos[10].html = 'Clique <a href="controlador.php?acao=documento_download_anexo&acao_origem=procedimento_visualizar&id_anexo=75669401&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0511adbb07a8fd4bae3cd330d8e21755d11b74c4f4e4301986018792dcc08916" target="_blank" class="ancoraVisualizacaoArvore">aqui</a> para visualizar o conteúdo deste documento em uma nova janela.';
+
+
+//CA=220
+Nos[11] = new infraArvoreNo("DOCUMENTO","913052494","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=913052494&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2fb132e64fbca9003e47bb3a7899068061a13ace895fd1e10a60ae326d5a4887","ifrVisualizacao","RH - Estágio - Plano de Estágio 123591469","RH - Estágio - Plano de Estágio 123591469","svg/documento_interno.svg?11","svg/documento_interno.svg?11","svg/documento_interno.svg?11",true,true,null,null,"noVisitado","123591469");
+Nos[11].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913052494&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=342675667ad02847b4b224f2ff5895cd3e844633754b41804e9821ff09eba550" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento" title="Consultar/Alterar Documento"/></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="#" onclick="assinarDocumento();" tabindex="452" ><img  src="svg/documento_assinar.svg?11" alt="Assinar Documento" title="Assinar Documento"/></a><a href="controlador.php?acao=assinatura_externa_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913052494&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6e139d0ac7d0e068bff2f9ad589b25c3abf9d38b30693da7a59342ea5708224d" tabindex="452" ><img  src="svg/documento_assinatura_externa.svg?11" alt="Gerenciar Liberações para Assinatura Externa" title="Gerenciar Liberações para Assinatura Externa" /></a><a href="controlador.php?acao=bloco_escolher&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913052494&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=72c4a2084c3eaada8026f2f78862da6eb0d21f3b83ab76f72b9481601cbcb272" tabindex="452" ><img  src="svg/bloco_incluir_protocolo.svg?11"  alt="Incluir em Bloco de Assinatura" title="Incluir em Bloco de Assinatura"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=913052494&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=064a1e8b1c0b60cfe8f811aba3b15707ef13fd6640313813886844c718d8d59a" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=documento_versao_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913052494&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=28559697362dda3d6dddfc3fb5a8ec50b071666a53258ff7e788c0cde889ed93" tabindex="452" ><img  src="svg/documento_versoes.svg?11" alt="Versões do Documento" title="Versões do Documento"/></a><a target="_blank" href="controlador.php?acao=documento_imprimir_web&acao_origem=arvore_visualizar&id_documento=913052494&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=74abeddc255830fae4423b1596d64d136d8befed30c70b1843fd38993eebec4e" tabindex="452" ><img  src="svg/documento_imprimir.svg?11" alt="Imprimir Web" title="Imprimir Web" /></a><a href="controlador.php?acao=procedimento_gerar_pdf&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913052494&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4d42d0d475bc5ba9dad72d6f1b67c5c8b2bf19d3ca2c934f65c85fe8fafcc9aa" tabindex="452" ><img  src="svg/documento_gerar_pdf.svg?11" alt="Gerar Arquivo PDF do Documento" title="Gerar Arquivo PDF do Documento"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=125363129&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4182c1d14ee0f20b258d13e6897912b845653373c647c5f7c7fa2a9cd109470c" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[11].src = 'controlador.php?acao=documento_visualizar&acao_origem=procedimento_visualizar&id_documento=913052494&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c9b549782513d380e820a720eee90cc2165a99759ef0d75fff50d03b2fafe0d0';
+Nos[11].html = '';
+
+
+//CA=230
+Nos[12] = new infraArvoreNo("DOCUMENTO","913331495","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=913331495&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e628f2ee98b4bda4a38d27ec080ab404e921cb035ec5507a4c06f991b8d24dd6","ifrVisualizacao","RH - Estágio - Termo de Compromisso 74 (123844166)","RH - Estágio - Termo de Compromisso 74 (123844166)","svg/documento_interno.svg?11","svg/documento_interno.svg?11","svg/documento_interno.svg?11",true,true,null,null,"noVisitado","123844166");
+Nos[12].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913331495&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a5a767a9bc6af64851302a0bd5db488cdf96d6b41b6e04d2ee69b5ca262aedba" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento" title="Consultar/Alterar Documento"/></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=913331495&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6fe02b4b919b2d6d917de91d7735451c0a37b944776f01f5df33a0b3bb515f83" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a target="_blank" href="controlador.php?acao=documento_imprimir_web&acao_origem=arvore_visualizar&id_documento=913331495&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=8eb0c5b84dd6bfb5d6794e21e1605d427dcfa1db88beea18be68ed82eb00e97f" tabindex="452" ><img  src="svg/documento_imprimir.svg?11" alt="Imprimir Web" title="Imprimir Web" /></a><a href="controlador.php?acao=procedimento_gerar_pdf&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913331495&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=788802236ef4e487bdd9b91848cbd49e9b9f44a39fa636a177c82bbb4069c30d" tabindex="452" ><img  src="svg/documento_gerar_pdf.svg?11" alt="Gerar Arquivo PDF do Documento" title="Gerar Arquivo PDF do Documento"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=125621135&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=82a955bf181ead745c5e4bd9058f423d86646abe476109004f68574239481a1e" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[12].src = 'controlador.php?acao=documento_visualizar&acao_origem=procedimento_visualizar&id_documento=913331495&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c72ce5cbad390efaf457f0742b2cdeb27642a056dcb76d9dda89dc03f2318869';
+Nos[12].html = '';
+
+
+//CA=240
+Nos[13] = new infraArvoreNo("DOCUMENTO","913378840","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=913378840&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=fa59d563f4d5b60eab1933a0ed33d218dc5d41b673def06317931ec58221beb0","ifrVisualizacao","E-mail 123887012","Data de Envio: 29/09/2025 11:57:08\nDe: SEPLAG/Isabela Rios <isabela.rios@planejamento.mg.gov.br>\nPara: mariana.bicalho@fjp.mg.gov.br\n          yan.carmo@planejamento.mg.gov.br\n          ana.morais@planejamento.mg.gov.br\n          leidi.alvesw@gmail.com\nAssunto: Contratação de estagiário -   LEIDI SILVA ALVES\n","svg/documento_email.svg?11","svg/documento_email.svg?11","svg/documento_email.svg?11",true,true,null,null,"noVisitado","123887012");
+Nos[13].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913378840&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=283be08b312f8ed207fedc4eda33b20bb00e228b571caaa0515e796f839e598f" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento" title="Consultar/Alterar Documento"/></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="encaminharEmail();" tabindex="452" ><img  src="svg/email_encaminhar.svg?11" alt="Encaminhar / Reenviar Correspondência Eletrônica" title="Encaminhar / Reenviar Correspondência Eletrônica"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=913378840&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a074b85ec0e267d35231d838bf3f45008929c474605348250c554d67c8fdfc60" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a target="_blank" href="controlador.php?acao=documento_imprimir_web&acao_origem=arvore_visualizar&id_documento=913378840&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c03d261d7de530e3a828f3300e41ac1f6eacc8cafcf26a0185f2178651d49050" tabindex="452" ><img  src="svg/documento_imprimir.svg?11" alt="Imprimir Web" title="Imprimir Web" /></a><a href="controlador.php?acao=procedimento_gerar_pdf&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=913378840&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e5e7615f15274158a6fa515d747f01848ba19404fbaba6309f9302b76d835c4f" tabindex="452" ><img  src="svg/documento_gerar_pdf.svg?11" alt="Gerar Arquivo PDF do Documento" title="Gerar Arquivo PDF do Documento"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=125664668&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=33939d5cff66baed816964c4c1be08ec2c62cddeb07a4dd604a15946a26e763d" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[13].src = 'controlador.php?acao=documento_visualizar&acao_origem=procedimento_visualizar&id_documento=913378840&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d78defc357242163a7637020534218bb5a509ea38df76f49f54ac6d6caf929d8';
+Nos[13].html = '';
+
+
+//CA=220
+Nos[14] = new infraArvoreNo("DOCUMENTO","914676970","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=914676970&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=ef40f95e3bc85f917c044cc0d902df6a975837d94ddd3ea471034dc590113c3b","ifrVisualizacao","RH - Estágio - Atestado de Início 125063852","RH - Estágio - Atestado de Início 125063852","svg/documento_interno.svg?11","svg/documento_interno.svg?11","svg/documento_interno.svg?11",true,true,null,null,"noVisitado","125063852");
+Nos[14].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=914676970&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=b3eea2b39bd0be33f607fb47317d5ed65f13d200599851e17259a98f61f4f371" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento" title="Consultar/Alterar Documento"/></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="enviarEmailDocumento();" tabindex="452" ><img  src="svg/email_enviar.svg?11" alt="Enviar Documento por Correio Eletrônico" title="Enviar Documento por Correio Eletrônico"/></a><a href="#" onclick="assinarDocumento();" tabindex="452" ><img  src="svg/documento_assinar.svg?11" alt="Assinar Documento" title="Assinar Documento"/></a><a href="controlador.php?acao=assinatura_externa_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=914676970&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=22f2589cc8aec79d4366f79a010bd959ca0ae50d306f61a2f7abab88da7b8a9e" tabindex="452" ><img  src="svg/documento_assinatura_externa.svg?11" alt="Gerenciar Liberações para Assinatura Externa" title="Gerenciar Liberações para Assinatura Externa" /></a><a href="controlador.php?acao=bloco_escolher&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=914676970&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=746015b9495b1793557b2be2482c74e1f3242c9c9ba63ebbf04a4915dea79683" tabindex="452" ><img  src="svg/bloco_incluir_protocolo.svg?11"  alt="Incluir em Bloco de Assinatura" title="Incluir em Bloco de Assinatura"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=914676970&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=76772baaccdfb4da228208672604282c7418632bbbd2e208f13eb24d74b096b0" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a href="controlador.php?acao=documento_versao_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=914676970&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=169de3336b58ae0896bdb8bed87c9d7f56397e362be5bd2f8606bd1ab1959621" tabindex="452" ><img  src="svg/documento_versoes.svg?11" alt="Versões do Documento" title="Versões do Documento"/></a><a target="_blank" href="controlador.php?acao=documento_imprimir_web&acao_origem=arvore_visualizar&id_documento=914676970&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e5d364941b4272f984c8d5025857ad56fab418939f598564c22bd28c38731c91" tabindex="452" ><img  src="svg/documento_imprimir.svg?11" alt="Imprimir Web" title="Imprimir Web" /></a><a href="controlador.php?acao=procedimento_gerar_pdf&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=914676970&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=23a945c49a751e930ffa725133a2a7733da8f3a9606ac65e27eaa37cabab6785" tabindex="452" ><img  src="svg/documento_gerar_pdf.svg?11" alt="Gerar Arquivo PDF do Documento" title="Gerar Arquivo PDF do Documento"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=126857758&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d283aee639d0e8d04ee38c7c147500fb52d6101bada54772f55a79f0a30d4bc0" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[14].src = 'controlador.php?acao=documento_visualizar&acao_origem=procedimento_visualizar&id_documento=914676970&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=291b34b7ce0afe8d7131dd594ae079bd32c61ac3ba1512859f2a474b33b20ce9';
+Nos[14].html = '';
+
+
+//CA=240
+Nos[15] = new infraArvoreNo("DOCUMENTO","914765554","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=914765554&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=90093e0274008cd45daf44c93ab0337da71bfc17f37af0385b9fda962aec0602","ifrVisualizacao","E-mail 125144556","Data de Envio: 15/10/2025 10:22:12\nDe: SEPLAG/Isabela Rios <isabela.rios@planejamento.mg.gov.br>\nPara: mariana.bicalho@fjp.mg.gov.br\n          leidi.alvesw@gmail.com\nAssunto: Contratação de estagiário -  LEIDI SILVA ALVES\n","svg/documento_email.svg?11","svg/documento_email.svg?11","svg/documento_email.svg?11",true,true,null,null,"noVisitado","125144556");
+Nos[15].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=914765554&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=fe92cce07b0948226e72b39266aa7c271b0bc3f7fb184a2e3b8f4dbc67faaf98" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento" title="Consultar/Alterar Documento"/></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="encaminharEmail();" tabindex="452" ><img  src="svg/email_encaminhar.svg?11" alt="Encaminhar / Reenviar Correspondência Eletrônica" title="Encaminhar / Reenviar Correspondência Eletrônica"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=914765554&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d6976eab8cc254429cb80c2254260482cd889287ba1a7ba3cd2479416e4ad2ed" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a target="_blank" href="controlador.php?acao=documento_imprimir_web&acao_origem=arvore_visualizar&id_documento=914765554&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=fffc03b2173e427b67ba8cd0218db35e73a9faa84a7c11ff089b7f285163094e" tabindex="452" ><img  src="svg/documento_imprimir.svg?11" alt="Imprimir Web" title="Imprimir Web" /></a><a href="controlador.php?acao=procedimento_gerar_pdf&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=914765554&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=be04f2b321d57fc6c92231c00b089d224f03d4210e12ee7b244b5aae8f859dab" tabindex="452" ><img  src="svg/documento_gerar_pdf.svg?11" alt="Gerar Arquivo PDF do Documento" title="Gerar Arquivo PDF do Documento"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=126939437&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=7af1aeedb3704c28f308fb0ae0c1a3568783e9b89ac2651ed2b356ad66adfdd0" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[15].src = 'controlador.php?acao=documento_visualizar&acao_origem=procedimento_visualizar&id_documento=914765554&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e8365dc825f7149305fa9088a31335fd22edf62af0cdef0496cca521e4eb841b';
+Nos[15].html = '';
+
+
+//CA=240
+Nos[16] = new infraArvoreNo("DOCUMENTO","914821560","912619680","controlador.php?acao=arvore_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&id_documento=914821560&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a34394107156d7972dcb807b128409380f7f4bab49d5f8f100e253969135fee7","ifrVisualizacao","E-mail 125195254","Data de Envio: 15/10/2025 15:37:42\nDe: SEPLAG/Leandro Carvalho da Silveira <leandro.silveira@planejamento.mg.gov.br>\nPara: bernardo.borges019@gmail.com\n          yan.carmo@planejamento.mg.gov.br\n          clarisse.campos@planejamento.mg.gov.br\nAssunto: Orientações de Início de Estágio\n","svg/documento_email.svg?11","svg/documento_email.svg?11","svg/documento_email.svg?11",true,true,null,null,"noVisitado","125195254");
+Nos[16].acoes = '<a href="controlador.php?acao=documento_escolher_tipo&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=605324f1f7b4e39bfdabb0fbd7903c0cbe162b1c7c5607094730ffd57972e157" tabindex="452" ><img   src="svg/documento_incluir.svg?11" alt="Incluir Documento" title="Incluir Documento"/></a><a href="controlador.php?acao=documento_alterar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=914821560&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=bb61703b19a1f02a8a39b90d4732a029766204f137d151309ad721064221cdae" tabindex="452" ><img  src="svg/documento_alterar.svg?11" alt="Consultar/Alterar Documento" title="Consultar/Alterar Documento"/></a><a href="controlador.php?acao=acompanhamento_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91665b9ad6e650c1f4a3b734469394419b3d2f8c67e73042b963872b0a977527" tabindex="452" ><img  src="svg/acompanhamento_especial_cadastro.svg?11" alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a><a href="#" onclick="cienciaDocumento();" tabindex="452" ><img  src="svg/ciencia.svg?11" alt="Ciência" title="Ciência" /></a><a href="controlador.php?acao=procedimento_enviar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6802da1692b6b04597c4f7d6ea9ad6421b098478ca3972a481b1d413e3d7c71d" tabindex="452" ><img  src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo" /></a><a href="controlador.php?acao=procedimento_atualizar_andamento&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=27f26dec07dfbf6f3c1fe1fc946f5438dc46e3cbfab20b0d8d787d4c2e430c22" tabindex="452" ><img  src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento" /></a><a href="#" onclick="encaminharEmail();" tabindex="452" ><img  src="svg/email_encaminhar.svg?11" alt="Encaminhar / Reenviar Correspondência Eletrônica" title="Encaminhar / Reenviar Correspondência Eletrônica"/></a><a href="controlador.php?acao=protocolo_modelo_gerenciar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_protocolo=914821560&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9fefa2a7fb986c53ee4d0aaee89053f516c9a61b9ba70780f8e5d71bd7011b8a" tabindex="452" ><img  src="svg/documento_modelo.svg?11" alt="Adicionar aos Favoritos" title="Adicionar aos Favoritos"/></a><a target="_blank" href="controlador.php?acao=documento_imprimir_web&acao_origem=arvore_visualizar&id_documento=914821560&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d2190fc9feb140bfa697363153c5090bde067cda6086e379867a03835c37a8b1" tabindex="452" ><img  src="svg/documento_imprimir.svg?11" alt="Imprimir Web" title="Imprimir Web" /></a><a href="controlador.php?acao=procedimento_gerar_pdf&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_documento=914821560&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=051b0c257755840bced4d28df94e021bed88e43a6092700b25a7fb0457ca2d4e" tabindex="452" ><img  src="svg/documento_gerar_pdf.svg?11" alt="Gerar Arquivo PDF do Documento" title="Gerar Arquivo PDF do Documento"/></a><a href="controlador.php?acao=comentario_listar&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_rel_protocolo_protocolo=126990963&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=cebf887fa5023b9d4bbb8e4a6927a7b90087d0b0f9773e73713be98d05343750" tabindex="452" ><img  src="svg/comentario.svg?11" alt="Comentários" title="Comentários"/></a><a href="#" onclick="concluirProcesso();" tabindex="452" ><img src="svg/processo_concluir.svg?11" alt="Concluir Processo" title="Concluir Processo" />';
+Nos[16].src = 'controlador.php?acao=documento_visualizar&acao_origem=procedimento_visualizar&id_documento=914821560&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=725ecb4c27b7281a311dd527ccb9a4c824e37a5d266d8f790743d71674b0378a';
+Nos[16].html = '';
+
+
+
+Nos[1].acoes = Nos[1].acoes.concat('');
+Nos[2].acoes = Nos[2].acoes.concat('');
+Nos[3].acoes = Nos[3].acoes.concat('');
+Nos[4].acoes = Nos[4].acoes.concat('');
+Nos[5].acoes = Nos[5].acoes.concat('');
+Nos[6].acoes = Nos[6].acoes.concat('');
+Nos[7].acoes = Nos[7].acoes.concat('');
+Nos[8].acoes = Nos[8].acoes.concat('');
+Nos[9].acoes = Nos[9].acoes.concat('');
+Nos[10].acoes = Nos[10].acoes.concat('');
+Nos[11].acoes = Nos[11].acoes.concat('');
+Nos[12].acoes = Nos[12].acoes.concat('');
+Nos[13].acoes = Nos[13].acoes.concat('');
+Nos[14].acoes = Nos[14].acoes.concat('');
+Nos[15].acoes = Nos[15].acoes.concat('');
+Nos[16].acoes = Nos[16].acoes.concat('');
+
+
+
+
+
+
+
+    NosAcoes[0] = new infraArvoreAcao("LINHA_DIRETA","LD912619680","912619680","controlador.php?acao=procedimento_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&linha_direta=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c7c9a22412f32a2915471e88cea38c152748f7f77546fec90ab46c2491995fe8",null,"Filtrar Linha Direta","svg/linha_direta1.svg?11",true);
+NosAcoes[1] = new infraArvoreAcao("NIVEL_ACESSO","NA912619680","912619680","javascript:alert('Acesso Restrito\\nDados Pessoais (LGPD) (Lei 13.709/18)');",null,"Acesso Restrito\nDados Pessoais (LGPD) (Lei 13.709/18)","svg/processo_restrito.svg?11",true);
+NosAcoes[2] = new infraArvoreAcao("BASE_CONHECIMENTO","BC","912619680","controlador.php?acao=base_conhecimento_listar_associadas&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&id_tipo_procedimento=100000822&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=94e1bcf84cb0f5097124d41c4f2f581ae0b492c1d12dbb56649fd78357c7223c","ifrVisualizacao","Visualizar Bases de Conhecimento Associadas","svg/base_conhecimento.svg?11",true);
+NosAcoes[3] = new infraArvoreAcao("UNIDADE_GERADORA","UG913344584","913344584","javascript:alert('SEPLAG/DAM-ESTÁGIO - Diretoria de Admissão e Movimentação - Gestão de Estágio');",null,"Diretoria de Admissão e Movimentação - Gestão de Estágio",null,true,"SEPLAG/DAM-ESTÁGIO");
+NosAcoes[4] = new infraArvoreAcao("NIVEL_ACESSO","NA913344584","913344584","javascript:alert('Acesso Restrito\\nDocumento Preparatório (Art. 7º, § 3º, da Lei nº 12.527/2011)');",null,"Acesso Restrito\nDocumento Preparatório (Art. 7º, § 3º, da Lei nº 12.527/2011)","svg/processo_restrito.svg?11",true);
+NosAcoes[5] = new infraArvoreAcao("UNIDADE_GERADORA","UG912619696","912619696","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[6] = new infraArvoreAcao("UNIDADE_GERADORA","UG912619697","912619697","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[7] = new infraArvoreAcao("UNIDADE_GERADORA","UG912619704","912619704","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[8] = new infraArvoreAcao("UNIDADE_GERADORA","UG912619698","912619698","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[9] = new infraArvoreAcao("UNIDADE_GERADORA","UG912619707","912619707","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[10] = new infraArvoreAcao("UNIDADE_GERADORA","UG912910322","912910322","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[11] = new infraArvoreAcao("NIVEL_ACESSO","NA912910322","912910322","javascript:alert('Acesso Restrito\\nDocumento Preparatório (Art. 7º, § 3º, da Lei nº 12.527/2011)');",null,"Acesso Restrito\nDocumento Preparatório (Art. 7º, § 3º, da Lei nº 12.527/2011)","svg/processo_restrito.svg?11",true);
+NosAcoes[12] = new infraArvoreAcao("UNIDADE_GERADORA","UG912910701","912910701","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[13] = new infraArvoreAcao("NIVEL_ACESSO","NA912910701","912910701","javascript:alert('Acesso Restrito\\nDados Pessoais (LGPD) (Lei 13.709/18)');",null,"Acesso Restrito\nDados Pessoais (LGPD) (Lei 13.709/18)","svg/processo_restrito.svg?11",true);
+NosAcoes[14] = new infraArvoreAcao("UNIDADE_GERADORA","UG912913393","912913393","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[15] = new infraArvoreAcao("UNIDADE_GERADORA","UG912914416","912914416","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[16] = new infraArvoreAcao("NIVEL_ACESSO","NA912914416","912914416","javascript:alert('Acesso Restrito');",null,"Acesso Restrito","svg/processo_restrito.svg?11",true);
+NosAcoes[17] = new infraArvoreAcao("UNIDADE_GERADORA","UG913052494","913052494","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[18] = new infraArvoreAcao("NIVEL_ACESSO","NA913052494","913052494","javascript:alert('Acesso Restrito\\nDocumento Preparatório (Art. 7º, § 3º, da Lei nº 12.527/2011)');",null,"Acesso Restrito\nDocumento Preparatório (Art. 7º, § 3º, da Lei nº 12.527/2011)","svg/processo_restrito.svg?11",true);
+NosAcoes[19] = new infraArvoreAcao("ASSINATURA","A913052494","913052494","javascript:alert('Assinado por:\\nLeidi Silva Alves\\nEstagiário(a)\\nSEPLAG/ECIA\\n\\nYan Vieira do Carmo\\nDiretor (a)\\nSEPLAG/AUTOMATIZAMG\\n\\nMariana Ferreira Bicalho\\nServidor(a) Público(a)\\nFJP/EG/CSAP');",null,"Assinado por:\nLeidi Silva Alves\nEstagiário(a)\nSEPLAG/ECIA\n\nYan Vieira do Carmo\nDiretor (a)\nSEPLAG/AUTOMATIZAMG\n\nMariana Ferreira Bicalho\nServidor(a) Público(a)\nFJP/EG/CSAP","svg/assinatura2.svg?11",true);
+NosAcoes[20] = new infraArvoreAcao("UNIDADE_GERADORA","UG913331495","913331495","javascript:alert('SEPLAG/DAM-ESTÁGIO - Diretoria de Admissão e Movimentação - Gestão de Estágio');",null,"Diretoria de Admissão e Movimentação - Gestão de Estágio",null,true,"SEPLAG/DAM-ESTÁGIO");
+NosAcoes[21] = new infraArvoreAcao("NIVEL_ACESSO","NA913331495","913331495","javascript:alert('Acesso Restrito\\nInformação Pessoal (Art. 31 da Lei nº 12.527/2011)');",null,"Acesso Restrito\nInformação Pessoal (Art. 31 da Lei nº 12.527/2011)","svg/processo_restrito.svg?11",true);
+NosAcoes[22] = new infraArvoreAcao("ASSINATURA","A913331495","913331495","javascript:alert('Assinado por:\\nAna Flavia de Castro Morais\\nSubsecretário(a)\\nSEPLAG/AUTOMATIZAMG\\n\\nYan Vieira do Carmo\\nSuperintendente.\\nSEPLAG/AUTOMATIZAMG\\n\\nMariana Ferreira Bicalho\\nServidor(a) Público(a)\\nFJP/EG/CSAP\\n\\nLeidi Silva Alves\\nUsuário Externo\\nSEPLAG/DAM-ESTÁGIO');",null,"Assinado por:\nAna Flavia de Castro Morais\nSubsecretário(a)\nSEPLAG/AUTOMATIZAMG\n\nYan Vieira do Carmo\nSuperintendente.\nSEPLAG/AUTOMATIZAMG\n\nMariana Ferreira Bicalho\nServidor(a) Público(a)\nFJP/EG/CSAP\n\nLeidi Silva Alves\nUsuário Externo\nSEPLAG/DAM-ESTÁGIO","svg/assinatura2.svg?11",true);
+NosAcoes[23] = new infraArvoreAcao("UNIDADE_GERADORA","UG913378840","913378840","javascript:alert('SEPLAG/DAM-ESTÁGIO - Diretoria de Admissão e Movimentação - Gestão de Estágio');",null,"Diretoria de Admissão e Movimentação - Gestão de Estágio",null,true,"SEPLAG/DAM-ESTÁGIO");
+NosAcoes[24] = new infraArvoreAcao("UNIDADE_GERADORA","UG914676970","914676970","javascript:alert('SEPLAG/AUTOMATIZAMG - Centro de Automatização e Inteligência Artificial');",null,"Centro de Automatização e Inteligência Artificial",null,true,"SEPLAG/AUTOMATIZAMG");
+NosAcoes[25] = new infraArvoreAcao("NIVEL_ACESSO","NA914676970","914676970","javascript:alert('Acesso Restrito\\nDados Pessoais (LGPD) (Lei 13.709/18)');",null,"Acesso Restrito\nDados Pessoais (LGPD) (Lei 13.709/18)","svg/processo_restrito.svg?11",true);
+NosAcoes[26] = new infraArvoreAcao("ASSINATURA","A914676970","914676970","javascript:alert('Assinado por:\\nYan Vieira do Carmo\\nSuperintendente.\\nSEPLAG/AUTOMATIZAMG');",null,"Assinado por:\nYan Vieira do Carmo\nSuperintendente.\nSEPLAG/AUTOMATIZAMG","svg/assinatura2.svg?11",true);
+NosAcoes[27] = new infraArvoreAcao("UNIDADE_GERADORA","UG914765554","914765554","javascript:alert('SEPLAG/DAM-ESTÁGIO - Diretoria de Admissão e Movimentação - Gestão de Estágio');",null,"Diretoria de Admissão e Movimentação - Gestão de Estágio",null,true,"SEPLAG/DAM-ESTÁGIO");
+NosAcoes[28] = new infraArvoreAcao("UNIDADE_GERADORA","UG914821560","914821560","javascript:alert('SEPLAG/DAM-ESTÁGIO - Diretoria de Admissão e Movimentação - Gestão de Estágio');",null,"Diretoria de Admissão e Movimentação - Gestão de Estágio",null,true,"SEPLAG/DAM-ESTÁGIO");
+
+
+
+    objArvore = new infraArvore('divArvore', Nos, NosAcoes, 'hdnArvore', 'topmenu', 24);
+
+    objArvore.processar = function(no){
+      if(!parent.infraIsBreakpointBootstrap('lg') && (no instanceof infraArvoreNo || (no instanceof infraArvoreAcao && no.target == "ifrVisualizacao" && no.href != "javascript:void"))) {
+        parent.document.getElementById('ifrVisualizacao').onload = function() {
+          if(!parent.infraIsBreakpointBootstrap('lg')) {
+            parent.document.getElementById('divIframeVisualizacao').style.cssText = "display:block !important;";
+            parent.document.getElementById('divIframeArvore').style.cssText = "display:none !important;";
+          }
+        }
+      }
+      return no;
+    }
+
+    objArvore.getNoAnterior = function(nodeId){
+      var i,j,n;
+      n = this.nodes.length;
+
+      if (n > 1) {
+
+        for (i = 0; i < n; i++) {
+          if (this.nodes[i].id==nodeId) {
+            break;
+          }
+        }
+
+        if (i > 0){
+
+          if (this.nodes[i-1].tipo == 'FEDERACAO' || this.nodes[i-1].tipo=='INSTALACAO_FEDERACAO' || this.nodes[i-1].tipo=='ORGAO_FEDERACAO'){
+            return this.nodes[0];
+          }
+
+          if (this.nodes[i].tipo == 'PASTA'){
+
+            for(j=n-1;j>i;j--){
+              if (this.nodes[j].idPai==this.nodes[i].id && this.nodes[j].tipo != 'AGUARDE'){
+                return this.nodes[j];
+              }
+            }
+
+            for(j=i-1;j>0;j--){
+              if (this.nodes[j].tipo == 'PASTA'){
+                return this.nodes[j];
+              }
+            }
+
+          }else{
+            if (this.nodes[i-1].idPai == this.nodes[i].idPai || this.nodes[i-1].idPai == null){
+              return this.nodes[i-1];
+            }else{
+              for (j=1;j<n;j++){
+                if (this.nodes[j].tipo == 'PASTA' && this.nodes[j].id==this.nodes[i].idPai) {
+                  if (this.nodes[j-1].tipo == 'PROCESSO'){
+                    return this.nodes[j-1];
+                  }else if (this.nodes[j-1].tipo == 'AGUARDE'){
+                    return this.nodes[j-2];
+                  }else if (this.nodes[j-1].tipo == 'PASTA'){
+                    return this.nodes[j-1];
+                  }
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+      return null;
+    }
+
+    objArvore.getNoProximo = function(nodeId){
+      var i,j,k,n;
+      n = this.nodes.length;
+
+      if (n > 1) {
+
+        for (i = 0; i < n; i++) {
+          if (this.nodes[i].id==nodeId) {
+            break;
+          }
+        }
+
+        if (i < n){
+
+          if (i==0){
+
+            if (this.nodes[1].tipo == 'FEDERACAO'){
+              for (j=1;j<n;j++){
+                if (this.nodes[j].tipo != 'FEDERACAO' && this.nodes[j].tipo!='INSTALACAO_FEDERACAO' && this.nodes[j].tipo!='ORGAO_FEDERACAO'){
+                  return this.nodes[j];
+                }
+              }
+            }else{
+              return this.nodes[1];
+            }
+          }
+
+          if (this.nodes[i].tipo == 'PASTA'){
+
+            if (this.nodes[i].carregado){
+              for(j=i+1;j<n;j++){
+                if (this.nodes[j].idPai==this.nodes[i].id && this.nodes[j].tipo != 'AGUARDE'){
+                  return this.nodes[j];
+                }
+              }
+
+              for(j=i+1;j<n;j++){
+                if (this.nodes[j].tipo == 'PASTA'){
+                  return this.nodes[j];
+                }
+              }
+            }else {
+              return this.nodes[i];
+            }
+
+          }else{
+            if ((i < n - 1) && this.nodes[i+1].idPai == this.nodes[i].idPai){
+              return this.nodes[i+1];
+            }else{
+              for (j=1;j<n;j++){
+                if (this.nodes[j].tipo == 'PASTA' && this.nodes[j].id==this.nodes[i].idPai){
+                  for(k=j+1;k<n;k++){
+                    if (this.nodes[k].tipo == 'PASTA'){
+                      return this.nodes[k];
+                    }
+                  }
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+      return null;
+    }
+
+      
+    if (Nos.length){
+
+      Nos[0].processar = function (){
+        if(!parent.infraIsBreakpointBootstrap("lg")) {
+          parent.document.getElementById('ifrVisualizacao').src = "about:blank";
+          parent.document.getElementById('divIframeVisualizacao').style.cssText  = "display:block !important;";
+          parent.document.getElementById('divIframeArvore').style.cssText  = "display:none !important;";
+        }
+        document.location = 'controlador.php?acao=procedimento_visualizar&acao_origem=procedimento_visualizar&id_procedimento=912619680&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=5ffcf107043e91cbe063af3485d8876005040f9a682512544f369da49d7bb196';
+
+        return false;
+      }
+
+      if  (typeof(Clipboard) != 'undefined'){
+
+        associarNosClipboard(Nos);
+      }
+    }
+
+    objArvore.processarAbertura = function(no){
+
+      if (no.tipo.indexOf('FEDERACAO') != -1) {
+        return true;
+      }
+
+      processarIframe = true;
+
+      if (!processandoPasta){
+        if (!no.carregado){
+          document.getElementById('hdnPastaAtual').value = no.id;
+          document.getElementById('hdnProtocolos').value = Pastas[no.id.substr(5)]['protocolos'];
+          document.getElementById('frmArvore').action = Pastas[no.id.substr(5)]['link'];
+          document.getElementById('frmArvore').submit();
+        }
+
+        document.getElementById('anchorFP912619680').style.display='';
+
+        objArvore.numPastasAbertas = objArvore.numPastasAbertas + 1;
+        if (objArvore.numPastasAbertas == 0){
+          document.getElementById('anchorAP912619680').style.display='none';
+        }
+
+        return true;
+      }
+
+      return false;
+    }
+
+    objArvore.processarFechamento = function(no){
+
+      if (no.tipo.indexOf('FEDERACAO') != -1) {
+        return true;
+      }
+
+      document.getElementById('hdnPastaAtual').value = no.id;
+      atualizarMensagemPasta('AGUARDE');
+      document.getElementById('anchorAP912619680').style.display='';
+      objArvore.numPastasAbertas = objArvore.numPastasAbertas - 1;
+      if (objArvore.numPastasAbertas == 0){
+        document.getElementById('anchorFP912619680').style.display='none';
+      }
+
+      return true;
+    }
+
+    var objNoSelecionado = null;
+    if ('' != ''){
+      objNoSelecionado = objArvore.getNo('');
+    }else if ('' != ''){
+      objNoSelecionado = objArvore.getNo('');
+    }else if(parent.infraIsBreakpointBootstrap("lg")){
+      objNoSelecionado = objArvore.getNo('912619680');
+    }else{
+      objNoSelecionado = objArvore.getNo('912619680');
+    }
+
+    if (objNoSelecionado != null){
+      objArvore.setNoSelecionado(objNoSelecionado);
+            self.setTimeout('atualizarVisualizacao()',100);
+          }
+  }
+
+  function atualizarVisualizacao(){
+    if (objArvore != null) {
+      no = objArvore.getNoSelecionado();
+      if (no != null) {
+        parent.document.getElementById('ifrVisualizacao').src = no.href;
+      }
+    }
+  }
+
+  function consultarAndamento(){
+    parent.document.getElementById('ifrVisualizacao').src = 'controlador.php?acao=procedimento_consultar_historico&acao_origem=arvore_visualizar&acao_retorno=arvore_visualizar&id_procedimento=912619680&arvore=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4e47abbc91f29f0aeea5fd162a3856afd9e718fd9adc7f60edd402804a56b36d';
+    var no = objArvore.getNoSelecionado();
+    if(!parent.infraIsBreakpointBootstrap('lg') && (no instanceof infraArvoreNo || (no instanceof infraArvoreAcao && no.target == "ifrVisualizacao" && no.href != "javascript:void"))) {
+      parent.document.getElementById('ifrVisualizacao').onload = function() {
+        if(!parent.infraIsBreakpointBootstrap('lg')) {
+          parent.document.getElementById('divIframeVisualizacao').style.cssText = "display:block !important;";
+          parent.document.getElementById('divIframeArvore').style.cssText = "display:none !important;";
+        }
+      }
+    }
+  }
+
+  function consultarProcedimentoCiencias(){
+      }
+
+  function consultarDocumentoCiencias(){
+      }
+
+
+  function processarPasta(){
+
+    if (processarIframe){
+
+      var ie = infraVersaoIE();
+
+      try{
+        if (!ie){
+          docIframe = document.getElementById('ifrPasta').contentWindow.document;
+        }else{
+          docIframe = window.frames['ifrPasta'].document;
+        }
+      }catch(e){
+        alert('Não foi possível recuperar os protocolos.');
+        return;
+      }
+
+      ret = docIframe.body.innerHTML;
+
+      if (ret != ''){
+
+        if (ret.substring(0,2) != 'OK'){
+
+          var prefixoValidacao = 'INFRA_VALIDACAO';
+
+          if (ret.substr(0,15) == prefixoValidacao){
+
+            atualizarMensagemPasta('AVISO');
+
+            var msg = ret.substr(prefixoValidacao.length+1);
+            msg = msg.infraReplaceAll("\\n", "\n");
+            msg = decodeURIComponent(msg);
+            alert(msg);
+
+          }else{
+
+            try{
+
+              atualizarMensagemPasta('ERRO');
+
+              if (docIframe.getElementById('divInfraExcecao')==null){
+                alert('Erro recuperando protocolos.');
+              }else{
+
+                document.getElementById("ifrPasta").style.display = 'block';
+                document.getElementById('frmArvore').style.display = 'none';
+
+                resizeIframe();
+
+                docIframe.getElementById('btnInfraFecharExcecao').value = 'Voltar';
+                if (!ie){
+                  docIframe.getElementById('btnInfraFecharExcecao').innerHTML = 'Voltar';
+                }
+                docIframe.getElementById('btnInfraFecharExcecao').onclick = function() {
+                  document.getElementById("ifrPasta").style.display = 'none';
+                  document.getElementById('frmArvore').style.display = 'block';
+                }
+
+              }
+
+            }catch(e){alert(e);}
+          }
+        }else{
+
+          if (objArvore != null){
+
+            var Nos = [];
+            var NosAcoes = [];
+
+            var arrComandos = ret.substr(3).split("\n");
+            for(var i=0; i < arrComandos.length; i++){
+              if (arrComandos[i].substr(0,3)=='Nos'){
+                eval(arrComandos[i]);
+              }
+            }
+
+            if (Nos.length==0){
+              atualizarMensagemPasta('NAO ENCONTRADO');
+            }else{
+              processandoPasta = true;
+              try{
+                var noPasta = objArvore.getNo(document.getElementById('hdnPastaAtual').value);
+
+                var div = document.getElementById('div' + noPasta.id);
+                div.innerHTML = '';
+
+                objArvore.adicionarFilhos(noPasta, Nos, NosAcoes);
+
+                associarNosClipboard(Nos);
+
+                noPasta.carregado = true;
+
+                if (noPasta.navegar != null){
+                  var funcaoNavegar = 'navegarArvore(\'' + noPasta.navegar + '\')';
+                  noPasta.navegar = null;
+                  setTimeout(funcaoNavegar, 200);
+                }
+
+              }catch(e){
+                alert(e);
+              }
+              processandoPasta = false;
+            }
+          }
+
+          if (INFRA_IE){
+            window.status='Finalizado.';
+          }
+        }
+      }
+    }
+  }
+
+  function navegarArvore(sentido) {
+
+    if (objArvore!=null) {
+
+      var noSelecionado = objArvore.getNoSelecionado();
+
+      if (noSelecionado!=null) {
+        var no = null;
+        while(true){
+          if (sentido == 'P'){
+            no = objArvore.getNoProximo(noSelecionado.id);
+          }else if (sentido == 'A'){
+            no = objArvore.getNoAnterior(noSelecionado.id);
+          }
+          if (no!=null) {
+
+            if(no.tipo == 'PASTA' ){
+              if(no.carregado){
+                noSelecionado = no;
+              }else{
+                no.navegar = sentido;
+                abrirFecharPasta(no.id);
+                break;
+              }
+            }else if(no.tipo == 'AGUARDE' || !no.bolHabilitado){
+              noSelecionado = no;
+            }else{
+              objArvore.setNoSelecionado(no);
+              self.setTimeout('atualizarVisualizacao()',100);
+              break;
+            }
+          }else{
+            alert("Não existem mais protocolos disponíveis para exibição.");
+            break;
+          }
+        }
+      }
+      else{
+        alert("Não existem mais protocolos disponíveis para exibição.");
+      }
+    }
+  }
+
+  function navegarTeclado(ev){
+    var key = infraGetCodigoTecla(ev);
+    if(key == 40) {
+      navegarArvore('P');
+      return false;
+    } else if(key == 38) {
+      navegarArvore('A');
+      return false;
+    }
+    return true;
+  }
+
+  function associarNosClipboard(nos){
+      var icone = null;
+      for(var i=0;i<nos.length;i++){
+        var no = nos[i];
+        if (no.tipo != 'PASTA' && no.tipo != 'AGUARDE' && no.tipo.indexOf('FEDERACAO') == -1) {
+          icone = document.getElementById('anchorImg' + no.id);
+
+          var id = 'popover-content' + icone.id;
+          var divConteudoPopover = null;
+          if (no.tipo.indexOf('PROCESSO') != -1) {
+            divConteudoPopover = $('<div id="' + id + '" style="display: none;position:relative;">\n' +
+            '  <div class="list-group custom-popover" tipo="' + no.tipo + '">\n' +
+              '     <a popoverId="' + icone.id + '" tipo="texto" onclick="copiarParaClipboard(this)" data-clipboard-text="' + no.aux + '" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#" ><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_texto.svg" title="Copiar texto" />&nbsp;<span class="align-self-center">' + no.aux + '</span></a>\n' +
+              '    <a popoverId="' + icone.id + '" tipo="texto" onclick="copiarParaClipboard(this)" data-clipboard-text="' + no.aux +' (' + no.title +')" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#" ><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_texto.svg" title="Copiar texto" />&nbsp;<span class="align-self-center">'  + no.aux +' (' + no.title + ')</span></a>\n' +
+              '    <a popoverId="' + icone.id + '" tipo="link" onclick="copiarParaClipboard(this)" data-clipboard-text="#{'+ no.id +'|'  + no.aux +'}#" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#" ><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_editor.svg" title="Copiar link editor" />&nbsp;<span class="align-self-center">' + no.aux + '</span></a>\n' +
+              '    <a popoverId="' + icone.id + '" tipo="link" onclick="copiarParaClipboard(this)" data-clipboard-text="#{'+ no.id +'|'  + no.aux +'} (' + no.title +  ')#" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#" ><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_editor.svg" title="Copiar link editor" />&nbsp;<span class="align-self-center">' + no.aux +' (' + no.title +  ')</span></a>\n' +
+              '    <a popoverId="' + icone.id + '" tipo="url" onclick="copiarParaClipboard(this)" data-clipboard-text="https://www.sei.mg.gov.br/sei/controlador.php?acao=procedimento_trabalhar&id_procedimento='+no.id+'" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#" ><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_link_direto.svg" /><span class="align-self-center">&nbsp;Link para Acesso Direto</span></a>\n' +
+              '    <a popoverId="' + icone.id + '"  onclick="fecharClipboard(this)" class="list-group-item d-flex flex-row li-fechar clipboard-icon-focus" href="#" ><span class="align-self-center">Fechar</span></a>\n' +
+              '  </div>\n' +
+              '</div>');
+          }else{
+
+            if (!no.bolHabilitado || no.tipo == 'DOCUMENTO_MOVIDO'){
+              divConteudoPopover = $('<div id="' + id + '" style="display: none;position:relative;">\n' +
+              '  <div class="list-group custom-popover" tipo="' + no.tipo + '">\n' +
+                  '    <a popoverId="' + icone.id + '" tipo="texto" onclick="copiarParaClipboard(this)" data-clipboard-text="' + no.aux + '" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#" ><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_texto.svg" title="Copiar texto"/>&nbsp;<span class="align-self-center">' + no.aux + '</span></a>\n' +
+                  '    <a popoverId="' + icone.id + '" tipo="texto" onclick="copiarParaClipboard(this)"  data-clipboard-text="' + no.label +'" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#" ><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_texto.svg" title="Copiar texto"/>&nbsp;<span class="align-self-center">'   + no.label + '</span></a>\n' +
+                  '    <a popoverId="' + icone.id + '"  onclick="fecharClipboard(this)" class="list-group-item d-flex flex-row li-fechar clipboard-icon-focus" href="#" ><span class="align-self-center">Fechar</span></a>\n' +
+                  '  </div>\n' +
+                  '</div>');
+            }else{
+              divConteudoPopover = $('<div id="' + id + '" style="display: none;position:relative;">\n' +
+              '  <div class="list-group custom-popover" tipo="' + no.tipo + '">\n' +
+                  '    <a popoverId="' + icone.id + '" tipo="texto" onclick="copiarParaClipboard(this)" data-clipboard-text="' + no.aux + '" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#"><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_texto.svg"  title="Copiar texto" />&nbsp;<span class="align-self-center">' + no.aux + '</span></a>\n' +
+                  '    <a popoverId="' + icone.id + '" tipo="texto" onclick="copiarParaClipboard(this)"  data-clipboard-text="' + no.label +'" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#"><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_texto.svg"  title="Copiar texto" />&nbsp;<span class="align-self-center">'   + no.label + '</span></a>\n' +
+                  '    <a popoverId="' + icone.id + '" tipo="link" onclick="copiarParaClipboard(this)" data-clipboard-text="#{'+ no.id +'|'  + no.aux +'}#" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#"><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_editor.svg" title="Copiar link editor"/>&nbsp;<span class="align-self-center">' + no.aux + '</span></a>\n' +
+                  '    <a popoverId="' + icone.id + '" tipo="link" onclick="copiarParaClipboard(this)" data-clipboard-text="#'+no.label.replace(no.aux,"{"+ no.id +"|"  + no.aux +"}")+'#" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#"><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_editor.svg" title="Copiar link editor"/>&nbsp;<span class="align-self-center">' + no.label +'</span></a>\n' +
+                  '    <a popoverId="' + icone.id + '" tipo="url" onclick="copiarParaClipboard(this)" data-clipboard-text="https://www.sei.mg.gov.br/sei/controlador.php?acao=procedimento_trabalhar&id_procedimento=912619680&id_documento='+no.id+'" class="list-group-item d-flex flex-row clipboard clipboard-icon-focus" href="#" ><img class="align-self-center clipboard-icon-img" src="imagens/arvore_copiar_link_direto.svg" /><span class="align-self-center">&nbsp;Link para Acesso Direto</span></a>\n' +
+                  '    <a popoverId="' + icone.id + '"  onclick="fecharClipboard(this)" class="list-group-item d-flex flex-row li-fechar clipboard-icon-focus" href="#" ><span class="align-self-center">Fechar</span></a>\n' +
+                  '  </div>\n' +
+                  '</div>');
+            }
+          }
+          $("body").append(divConteudoPopover);
+          $(icone).attr("data-toggle","popover");
+          $(icone).attr("data-placement","bottom");
+          $(icone).attr("href","#");
+
+          img = document.getElementById('icon' + no.id);
+          img.title = 'Menu cópia protocolo';
+
+          $(icone).click(function(e) {
+            e.preventDefault();
+          }).popover({
+            html: true,
+            sanitize: false,
+            content: function() {
+              return $("#"+'popover-content'+ this.id) .html();
+            },
+          });
+
+          $(icone).on('show.bs.popover', function () {
+            $("a[data-toggle=popover]").not($(this)).popover("hide");
+            
+          })
+          $(icone).on('shown.bs.popover', function () {
+            var idPopover = $("#"+this.id).attr("aria-describedby");
+            $( "#" +idPopover ).find(".clipboard-icon-focus").first().focus();
+          })
+        }
+      }
+  }
+
+  function atualizarMensagemPasta(tipo){
+
+    var pastaAtual = document.getElementById('hdnPastaAtual');
+
+    if (pastaAtual != null){
+
+      var idAguarde = pastaAtual.value.replace('PASTA','AGUARDE');
+
+      var spanAguarde = document.getElementById('span' + idAguarde);
+      var imgAguarde = document.getElementById('icon' + idAguarde);
+
+      if (spanAguarde != null && imgAguarde != null){
+        if (tipo == 'AVISO'){
+          spanAguarde.innerHTML = spanAguarde.title = 'Não foi possível carregar os protocolos.';
+          imgAguarde.src = '/infra_css/svg/remover.svg';
+        }else if (tipo == 'ERRO'){
+          spanAguarde.innerHTML = spanAguarde.title = 'Erro carregando protocolos.';
+          imgAguarde.src = '/infra_css/svg/remover.svg';
+        }else if (tipo == 'NAO ENCONTRADO'){
+          spanAguarde.innerHTML = spanAguarde.title = 'Nenhum protocolo encontrado.';
+          imgAguarde.src = '/infra_css/svg/remover.svg';
+        }else if (tipo == 'AGUARDE'){
+          spanAguarde.innerHTML = spanAguarde.title = 'Aguarde...';
+          imgAguarde.src = '/infra_css/svg/aguarde.svg';
+        }
+      }
+    }
+  }
+
+  function resizeIframe(){
+    document.getElementById("ifrPasta").style.height = (infraClientHeight()-30) + 'px';
+  }
+
+  function abrirFecharPasta(id){
+    objArvore.processarNoJuncao(id);
+
+  }
+
+  function visualizacaoRelacionados(n){
+    var div = document.getElementById('divRelacionadosParcial'+n);
+    if (div != null){
+      if (div.style.display=='block'){
+        div.style.display = 'none';
+      }else{
+        div.style.display = 'block';
+      }
+    }
+  }
+
+//</script>
+
+//--><!]]>
+</script>
+</head>
+
+<body onload="inicializar();" class="px-2 infraArvore">
+
+<div id="header">
+  <div id="topmenu"></div>
+</div>
+<div id="container" >
+  <div id="content">
+    <form id="frmArvore" method="post" target="ifrPasta">
+
+      <div id="divArvore">
+      </div>
+
+      <div id="divConsultarAndamento">
+        <a href="#" style="cursor:pointer;" onclick="consultarAndamento();"><img src="svg/processo_andamentos.svg?11" alt="Consultar Andamento" title="Consultar Andamento" />&nbsp;Consultar Andamento</a>
+      </div>
+
+      <div id="divRelacionados">
+        <label>Processos Relacionados:</label> <br />      </div>
+      <div id="divRelacionadosParciais">
+<a href="javascript:void(0);" onclick="visualizacaoRelacionados(0)" class="ancoraRelacionadosParcial">RH: Estágio (1)</a><br /><div id="divRelacionadosParcial0" class="divRelacionadosParcial">
+<div class="card-deck cardDeckRelacionado"><div class="card cardRelacionado">
+            <div class="card-body cardBodyRelacionado">
+            <p class="card-title cardTitleRelacionado"><a target="_blank" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_visualizar&id_procedimento=911978053&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=20ef3c7b5d9378c02d91d7a2192fe7a00438c19d503636e5dc2b7ebdfa4a0b28" class="card-block text-success">1500.01.0365569/2025-03</a></p><p class="card-text">Contratação de estagiário Automatiza.MG</p>
+                </div>
+            </div>            
+            </div></div>
+</div>
+
+      <input type="hidden" id="hdnArvore" name="hdnArvore" value="" />
+      <input type="hidden" id="hdnPastaAtual" name="hdnPastaAtual" value="" />
+      <input type="hidden" id="hdnProtocolos" name="hdnProtocolos" value="" />
+    </form>
+  </div>
+</div>
+
+<iframe id="ifrPasta" name="ifrPasta" onload="processarPasta();" width="100%" height="100%" frameborder="0" style="display:none;"></iframe>
+</body>
+</html>

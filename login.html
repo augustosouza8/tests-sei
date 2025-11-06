@@ -1,0 +1,1298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="pt-br" >
+<head >
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+      <link rel="manifest" href="favicon/sei.webmanifest">
+      <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+      <link rel="shortcut icon" href="favicon/favicon.ico">
+      <meta name="msapplication-TileColor" content="#0994dc">
+      <meta name="msapplication-config" content="favicon/browserconfig.xml">
+      <meta name="theme-color" content="#0994dc">
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="robots" content="noindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+<title>SEI - Controle de Processos</title>
+<script type="text/javascript" src="/ruxitagentjs_ICANVfhqru_10323250822043923.js" data-dtconfig="rid=RID_1219293516|rpid=-69860738|domain=mg.gov.br|reportUrl=/rb_c1d2b502-a5ce-4b72-bee2-fa6ae352c237|app=3140e01e5512e6eb|srre=favicon.png|owasp=1|featureHash=ICANVfhqru|srsr=1000|rdnt=1|uxrgce=1|cuc=41uchvpj|mel=100000|dpvc=1|md=mdcc1=a#divInfraBarraSistemaPadraoD ^rb div:nth-child(6) ^rb span|lastModification=1760107198982|tp=500,50,0|srbbv=2|agentUri=/ruxitagentjs_ICANVfhqru_10323250822043923.js"></script><link rel="shortcut icon" href="favicon/favicon.ico"><link href="/infra_css/infra-tooltip.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/infra-barra-progresso.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/infra-impressao-global.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="print" />
+<link href="/infra_css/infra-ajax.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/calendario/v2/infra-calendario.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/arvore/infra-arvore.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/mapa/infra-mapa.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/jquery/jquery-ui-1.13.2/jquery-ui.min.css?1.13.2" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/jquery/jquery-ui-1.13.2/jquery-ui.structure.min.css?1.13.2" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/jquery/jquery-ui-1.13.2/jquery-ui.theme.min.css?1.13.2" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/multiple-select/multiple-select.min.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_js/modal/jquery.modalLink-1.0.0.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/bootstrap/bootstrap.min.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/bootstrap/menu-bootstrap.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/infra-global-esquema-3.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<link href="/infra_css/esquemas/verde_mar/infra-esquema-3.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />      
+<link href="css/infra-local-esquema-3.css?4.0.12.15-2.0.18" rel="stylesheet" type="text/css" media="all" />
+<style></style><style type="text/css" >
+<!--/*--><![CDATA[/*><!--*/
+@media only print {
+
+#divInfraAreaTelaD,
+#divTabelaProcesso,
+#divTabelaProcesso div{
+display:block;
+min-height:100%;
+width: auto !important;
+height: auto !important;
+overflow: visible !important;
+}
+
+#divInfraAreaTelaE,
+#divComandos,
+#divFiltro,
+div.infraAreaPaginacao{
+display:none !important;
+}
+
+a {
+text-decoration:none !important;
+}
+}
+
+#divFiltro{
+margin: 15px 0 2px 0;
+}
+
+.caixaFiltroControle{
+color:#7F7F7F;
+padding: 10px;
+flex: auto;
+vertical-align: middle;
+text-decoration: none;
+text-align: center;
+font: normal normal 600 14px/20px Rawline;
+letter-spacing: 0px;
+opacity: 1;
+}
+
+div.caixaFiltroControle p{
+display:inline;
+vertical-align:top;
+font-size:0.875rem;
+line-height:24px;
+}
+
+div.caixaFiltroControle img{
+vertical-align:bottom;
+}
+
+a.botaoFecharFiltro,
+a.botaoFecharFiltro:hover,
+a.botaoFecharBanner{
+cursor:pointer;
+color: #fff;
+border-radius: 10px;
+background: #605F61;
+font-size: 16px;
+font-weight: bold;
+display: inline-block;
+line-height: 1px;
+padding: 9px 5px;
+}
+
+a.botaoFecharFiltro{
+float:right;
+margin-top:-9px;
+margin-right:-15px;
+}
+
+a.botaoFecharBanner{
+vertical-align:top;
+margin-right:-10px;
+}
+
+.botaoFecharFiltro:before,
+.botaoFecharBanner:before {
+content: "×";
+}
+
+table.tabelaControle,
+tr.infraTrClara td {
+border:0;
+}
+
+a.ancMarcador{
+font-size: 0.875rem;
+text-decoration:none !important;
+border:1px solid #d0d0d0;
+padding:4px;
+margin:2px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-border-radius: 4px;
+float:left;
+background-color:#f5f5f5;
+}
+
+a.ancMarcador img{
+padding: 0 4px 0 0;
+}
+
+a.ancMarcador div{
+display:table-cell;
+}
+
+
+.divLink .ancoraPadraoPreta{
+padding: 0px;
+}
+
+
+.divLink:not(:first-child){
+margin-left:15px !important;
+}
+
+.divLink:last-child{
+margin-right:15px;
+}
+
+#divInfraBtnTopo{
+flex: 0 0 100%;
+max-width: 100%;
+}
+
+div.barraBotoesSEI {
+background-color: transparent;
+box-shadow: none;
+}
+
+/*]]>*/-->
+</style>
+<script type="text/javascript" charset="iso-8859-1">
+var INFRA_PATH_CSS = "/infra_css",
+    INFRA_PATH_IMAGENS = "/infra_css/imagens",
+    INFRA_PATH_JS = "/infra_js",
+    INFRA_PATH_SVG = "/infra_css/svg",
+    INFRA_LUPA_TIPO_JANELA = 2,
+    INFRA_BARRA_TIPO_JANELA = 1;
+</script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/jquery/jquery-3.7.0.min.js?3.7.0"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/jquery/jquery-ui-1.13.2/jquery-ui.min.js?1.13.2"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/multiple-select/multiple-select.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/ddslick/jquery.ddslick.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/modal/jquery.modalLink-1.0.0.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraPaginaEsquema3.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraBotaoMenu.js?4.0.12.15-2.0.18"></script>    
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraUtil.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraCookie.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraUpload.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraTabelaDinamica.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraLupas.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraSelectEditavel.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraAjax.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/InfraTooltip.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/calendario/v2/InfraCalendario.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/arvore/InfraArvore.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="/infra_js/maskedpwd/MaskedPassword.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/bootstrap/bootstrap.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/bootstrap/infra-menu-bootstrap.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/touch/jquery.ui.touch-punch.min.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="utf-8" src="/infra_js/hotkeys/jquery.hotkeys.js?4.0.12.15-2.0.18"></script>
+<script type="text/javascript" charset="iso-8859-1" src="js/sei.js?4.0.12.15-2.0.18"></script>
+
+<script type="text/javascript" charset="iso-8859-1" >
+<!--//--><![CDATA[//><!--
+
+//<script>
+    $(document).ready(function() {
+
+        $('#ancLiberarMeusProcessos').click(function() {
+            verMeusProcessos('T')
+        });
+
+        $('#ancLiberarMarcador').click(function() {
+            filtrarMarcador(null);
+        });
+
+        $('#ancLiberarTipoProcedimento').click(function() {
+            filtrarTipoProcedimento(null);
+        });
+
+    });
+
+
+    var objLupaBlocoPesquisa = null;
+    var bolCarregando = true;
+
+    function inicializar() {
+
+        $('#divInfraBarraLocalizacao').prependTo($('#divControleProcessosConteudo'));
+
+        if ($('#divInfraBarraAcesso').length) {
+            $('#divInfraBarraAcesso').prependTo($('#divControleProcessosConteudo'));
+        }
+
+        if (infraIsBreakpointBootstrap("lg")) {
+                            infraExibirMenuSistemaEsquema();
+                    }
+
+                  
+        infraAbrirJanelaModal('controlador.php?acao=novidade_mostrar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9ec57cdbf43d1418c2c63bbd433d9ecc91c00350f98e02d778590bb5dc9a8830',950,500,false);
+        
+        objLupaBlocoPesquisa = new infraLupaText('txtBloco', 'hdnIdBloco', 'controlador.php?acao=bloco_selecionar_processo&tipo_selecao=1&id_object=objLupaBlocoPesquisa&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d23ac4ce0a4c3444ebd75c82fcc4c0253655afbe96dbbd947cfa01fda51efa26');
+        objLupaBlocoPesquisa.finalizarSelecao = function() {
+            document.getElementById('frmProcedimentoControlar').action = 'controlador.php?acao=rel_bloco_protocolo_cadastrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=de7afd074a6049dc261414f8435ee0727ce817d54dfd17abc54d8d2ebea335a9';
+            document.getElementById('frmProcedimentoControlar').submit();
+        };
+
+        infraEfeitoTabelas();
+    }
+
+    function acaoPendenciaMultipla(bolMsg) {
+        if ('R' == 'R') {
+            if (document.getElementById('hdnGeradosItensSelecionados').value == '' && document.getElementById('hdnRecebidosItensSelecionados').value == '') {
+                if (bolMsg) {
+                    alert('Nenhum processo selecionado.');
+                }
+                return false;
+            }
+            document.getElementById('hdnGeradosItemId').value = '';
+            document.getElementById('hdnRecebidosItemId').value = '';
+        } else {
+            if (document.getElementById('hdnDetalhadoItensSelecionados').value == '') {
+                if (bolMsg) {
+                    alert('Nenhum processo selecionado.');
+                }
+                return false;
+            }
+            document.getElementById('hdnDetalhadoItemId').value = '';
+        }
+
+        return true;
+    }
+
+    function acaoControleProcessos(link, requerSelecionado, aceitaSigiloso) {
+        if ((!requerSelecionado || acaoPendenciaMultipla(true)) && (aceitaSigiloso || !bloquearSigilosoSelecionado())) {
+            document.getElementById('frmProcedimentoControlar').action = link;
+            document.getElementById('frmProcedimentoControlar').submit();
+        }
+    }
+
+    function acaoBlocoProcessar() {
+        if (acaoPendenciaMultipla(true) && !bloquearSigilosoSelecionado()) {
+            document.getElementById('txtBloco').value = '';
+            document.getElementById('hdnIdBloco').value = '';
+            objLupaBlocoPesquisa.selecionar(700, 500, true);
+        }
+    }
+
+    function acaoRemoverMarcadorProcessar(link, requerSelecionado, aceitaSigiloso) {
+        if (!bloquearNenhumComMarcadorSelecionado()) {
+            acaoControleProcessos(link, requerSelecionado, aceitaSigiloso);
+        }
+    }
+
+    function bloquearSigilosoSelecionado() {
+
+        var sigilosos = document.getElementById('hdnIdSigilosos').value;
+
+        if (sigilosos != '') {
+
+            selecionados = '';
+
+            if ('R' == 'R') {
+
+                if (document.getElementById('hdnGeradosItensSelecionados').value != '') {
+                    selecionados = document.getElementById('hdnGeradosItensSelecionados').value;
+                }
+
+                if (document.getElementById('hdnRecebidosItensSelecionados').value != '') {
+                    if (selecionados != '') {
+                        selecionados += ',';
+                    }
+                    selecionados += document.getElementById('hdnRecebidosItensSelecionados').value;
+                }
+
+            } else {
+                selecionados = document.getElementById('hdnDetalhadoItensSelecionados').value;
+            }
+
+            if (selecionados != '') {
+
+                sigilosos = sigilosos.split(',');
+                selecionados = selecionados.split(',');
+
+                for (var i = 0; i < sigilosos.length; i++) {
+                    for (var j = 0; j < selecionados.length; j++) {
+                        if (sigilosos[i] == selecionados[j]) {
+                            alert('Operação não aplicável em processo sigiloso.');
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    function bloquearNenhumComMarcadorSelecionado() {
+
+        var commarcador = document.getElementById('hdnIdComMarcador').value;
+
+        if (commarcador != '') {
+
+            selecionados = '';
+
+            if ('R' == 'R') {
+
+                if (document.getElementById('hdnGeradosItensSelecionados').value != '') {
+                    selecionados = document.getElementById('hdnGeradosItensSelecionados').value;
+                }
+
+                if (document.getElementById('hdnRecebidosItensSelecionados').value != '') {
+                    if (selecionados != '') {
+                        selecionados += ',';
+                    }
+                    selecionados += document.getElementById('hdnRecebidosItensSelecionados').value;
+                }
+
+            } else {
+                selecionados = document.getElementById('hdnDetalhadoItensSelecionados').value;
+            }
+
+            if (selecionados != '') {
+
+                commarcador = commarcador.split(',');
+                selecionados = selecionados.split(',');
+
+                for (var i = 0; i < commarcador.length; i++) {
+                    for (var j = 0; j < selecionados.length; j++) {
+                        if (commarcador[i] == selecionados[j]) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        alert('Nenhum processo com marcador selecionado.');
+        return true;
+    }
+
+
+    function listarCredenciais() {
+        infraAbrirJanelaModal('', 500, 300);
+    }
+
+    function trocarVisualizacao(valor) {
+        document.getElementById('hdnTipoVisualizacao').value = valor;
+        document.getElementById('frmProcedimentoControlar').submit();
+    }
+
+    function verMeusProcessos(valor) {
+        document.getElementById('hdnMeusProcessos').value = valor;
+        document.getElementById('frmProcedimentoControlar').submit();
+    }
+
+    function filtrarMarcador(idMarcador) {
+        document.getElementById('hdnIdMarcador110000248').value = idMarcador;
+        if (idMarcador == null) {
+            document.getElementById('frmProcedimentoControlar').action = 'controlador.php?acao=procedimento_controlar&acao_origem=procedimento_controlar&tipo_visualizacao=R&tipo_filtro=M&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=733e9cb756be253230d820f362d78724d8fed705a3d46437b87cda8b5ada00d7';
+        } else {
+            document.getElementById('frmProcedimentoControlar').action = 'controlador.php?acao=procedimento_controlar&acao_origem=procedimento_controlar&tipo_visualizacao=R&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=77d49bbb56502fa34d7fd4f0913118d51068f816fbd41f73ebaa6e67d8caf52a';
+        }
+
+        document.getElementById('frmProcedimentoControlar').submit();
+    }
+
+    function filtrarTipoProcedimento(idTipoProcedimento) {
+        document.getElementById('hdnIdTipoProcedimento110000248').value = idTipoProcedimento;
+
+        if (idTipoProcedimento == null) {
+            document.getElementById('frmProcedimentoControlar').action = 'controlador.php?acao=procedimento_controlar&acao_origem=procedimento_controlar&tipo_visualizacao=R&tipo_filtro=P&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6f8356d34591225cffc0588258003b24b7575572b3f303f35647a44efdbf1bcd';
+        } else {
+            document.getElementById('frmProcedimentoControlar').action = 'controlador.php?acao=procedimento_controlar&acao_origem=procedimento_controlar&tipo_visualizacao=R&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=77d49bbb56502fa34d7fd4f0913118d51068f816fbd41f73ebaa6e67d8caf52a';
+        }
+
+        document.getElementById('frmProcedimentoControlar').submit();
+    }
+
+    function alterarVisualizacaoTabela(campo, valor, campoEsconder) {
+        document.getElementById(campo).value = valor;
+        document.getElementById(campoEsconder).value = "false";
+        document.getElementById('frmProcedimentoControlar').submit();
+    }
+
+    
+    function fecharBanner(chave) {
+        $("#divBanner").removeClass('d-md-block');
+        infraCriarCookie('GOVMG_SEI_07300016600_banner', chave, 3650);
+        $("#frmProcedimentoControlar").submit();
+    }
+
+    //</script>
+
+//--><!]]>
+</script>
+</head>
+<body onload="inicializar();"  >
+<div id="divInfraAreaGlobal" class="vh-100 vw-100 d-flex flex-column m-0 border-0" >
+
+      <nav id="navInfraBarraNavegacao" class="  navbar navbar-expand-md infraBarraNavegacao infraCorBarraSistema p-0">
+      
+        <div id="divInfraBarraSistema" class="flex-column w-100 h-100 infraBarraSistema"  >
+           <div id="divInfraBarraSistemaLinha"></div>
+            <h6  class="pl-3 mb-0 mx-0 text-white d-none infraCorBarraSuperior d-md-inline-block">GOVERNO DO ESTADO DE MINAS GERAIS</h6>
+            <h6  class="pr-3 mb-0 mx-0 text-white d-none infraCorBarraSuperior d-md-inline-block float-right">Versão distribuída pelo Ministério da Gestão e da Inovação em Serviços Públicos - MGI</h6>
+            <h6  class="pl-3 mb-0 mx-0 text-white d-md-none infraCorBarraSuperior">SEPLAG - Versão distribuída pelo MGI</h6>
+
+          <div id="divInfraBarraSistemaMovel" class="flex-row pb-0  pl-3 d-md-none media infraBarraSistemaMovel">
+            <div class="d-flex flex-grow-1 infraBarraSistemaMovelE" >
+               <div class="nav-item media mr-3 mt-2"><a id="lnkInfraMenuSistema" href="javascript:void(0);" onclick="infraClicarMenuBootstrap()" tabindex="1" class="align-self-center  d-flex"><img src="/infra_css/svg/menu_topo.svg?2.0.18" title="Exibir/Ocultar Menu do Sistema" alt="Exibir/Ocultar Menu do Sistema" class="align-self-center infraImg filter-blue" /></a></div>
+               <div class="align-self-center mt-1">
+                   <span id="spnInfraIdentificacaoSistema"><img class="d-none d-lg-inline-block" src="svg/sei_barra.svg" title="Sistema Eletrônico de Informações - Versão 4.0.12.15"/><img class="d-inline-block d-lg-none" src="svg/sei_barra.svg" title="Sistema Eletrônico de Informações - Versão 4.0.12.15 Distribuído por "/></span>
+               </div>
+            </div>
+            <div class="infraBarraSistemaMovelD d-flex flex-shrink-0">
+              <div class=" nav-item px-1 d-flex d-md-flex  py-md-0 py-2"> 
+                  <div class="input-group align-self-center ">
+                  <a id="lnkInfraUnidade" href="#" onclick="window.location.href='controlador.php?acao=infra_trocar_unidade&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9edb8f0d028634fab14769c64019ec9ecac5194efb5bd6b3655b84c7b845a670';" class="form-control infraAcaoBarraConjugada" title="Centro de Automatização e Inteligência Artificial" tabindex="60">SEPLAG/AUTOMATIZAMG</a>
+                  
+             </div >           
+          </div>
+              
+        <a class="navbar-toggler px-1 border-0 flex-grow-0 mr-3 align-self-center media" data-toggle="collapse" data-target="#divInfraBarraSistemaPadrao" aria-controls="divInfraBarraSistemaPadrao" aria-expanded="false">
+              <img id="imgInfraMenuPontosTopo" class=" align-self-center infraImg"  width="24" height="24" src="/infra_css/svg/menu_pontos_topo.svg?2.0.18" tabindex="100" title="Exibir/Ocultar Ações"/>
+            </a>
+        
+            </div>
+          </div>
+          
+          <div id="divInfraBarraSistemaPadrao" class="navbar m-0 p-0 infraCorBarraSistema  collapse navbar-collapse align-self-center infraBarraSistemaPadrao">
+            <div id="divInfraBarraSistemaPadraoE" class="nav-link p-0 pl-3 d-none d-md-flex infraBarraSistemaPadraoE">
+               <div class="nav-item media mr-3 mt-2"><a id="lnkInfraMenuSistema" href="javascript:void(0);" onclick="infraClicarMenuBootstrap()" tabindex="1" class="align-self-center  d-flex"><img src="/infra_css/svg/menu_topo.svg?2.0.18" title="Exibir/Ocultar Menu do Sistema" alt="Exibir/Ocultar Menu do Sistema" class="align-self-center infraImg filter-blue" /></a></div>
+              <div class="align-self-center"><img class="d-none d-lg-inline-block" src="svg/sei_barra.svg" title="Sistema Eletrônico de Informações - Versão 4.0.12.15"/><img class="d-inline-block d-lg-none" src="svg/sei_barra.svg" title="Sistema Eletrônico de Informações - Versão 4.0.12.15 Distribuído por "/></div>
+            </div>
+            <div id="divInfraBarraSistemaPadraoD" class="navbar-nav  flex-grow-1 justify-content-end infraBarraSistemaPadraoD p-3 p-md-0">
+                  <div class="nav-item px-1 media d-flex py-md-0 ">
+                 <form class="form-inline align-self-center w-100" id="frmProtocoloPesquisaRapida" method="post" action="controlador.php?acao=protocolo_pesquisa_rapida&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=cac98ffa2bf6e9769beb82c96606cc573fb3ce8c06a817ea00f7ce01d2a37a12">
+                  <div class="input-group">
+                    <input type="text" id="txtPesquisaRapida" name="txtPesquisaRapida" class="form-control" placeholder="Pesquisar..." style="font-size:.8rem;height:24px;width:190px;border:0;" tabindex="51" />
+                    <span class="input-group-btn">
+                      <span id="spnInfraUnidade" class="btn infraAcaoBarraConjugada">
+                      <i class="fa-solid fa-search" onclick="document.getElementById('frmProtocoloPesquisaRapida').submit();"></i>
+                      </span>
+                    </span>
+                  </div>
+                 </form>
+             </div >           
+          <div class=" nav-item px-1 d-none d-md-flex  py-md-0 py-2"> 
+                  <div class="input-group align-self-center ">
+                  <a id="lnkInfraUnidade" href="#" onclick="window.location.href='controlador.php?acao=infra_trocar_unidade&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9edb8f0d028634fab14769c64019ec9ecac5194efb5bd6b3655b84c7b845a670';" class="form-control infraAcaoBarraConjugada" title="Centro de Automatização e Inteligência Artificial" tabindex="52">SEPLAG/AUTOMATIZAMG</a>
+                  
+             </div >           
+          </div>
+          <div class="nav-item d-flex infraAcaoBarraSistema">
+            <a class="align-self-center  d-none d-md-block" id="lnkControleProcessos" href="#" onclick="location.href='controlador.php?acao=procedimento_controlar&reset=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=84abd03e883b80af152170ba4a029b50b82eb1fe96b2eb34586fccb5f9c3f5de'" title="Controle de Processos" tabindex="53">
+              <img src="svg/controle_processos_barra.svg" class="infraImg" title="Controle de Processos" />
+            </a>            
+            <span title="Controle de Processos"  class=" nav-link d-flex d-md-none" >
+              <img src="svg/controle_processos_barra.svg" class="infraImg" title="Controle de Processos" />
+              <a class="align-self-center text-white pl-1"  href="controlador.php?acao=procedimento_controlar&reset=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=84abd03e883b80af152170ba4a029b50b82eb1fe96b2eb34586fccb5f9c3f5de" title="Controle de Processos" tabindex="54" >                
+                Controle de Processos
+              </a>
+            </span>
+          </div >
+          <div class="nav-item d-flex infraAcaoBarraSistema">
+            
+            <a class="align-self-center  d-none d-md-block"  target="_blank" href="controlador.php?acao=novidade_mostrar&mostrar_todas=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a490941bef56e2abb88dff71baf5b82b15f964244dc7d937b1f3c22a3d479642" title="Novidades" tabindex="55">
+              <i class="fa fa-exclamation-circle" title="Novidades"></i>
+            </a>
+            
+            <span title="Novidades"  class=" nav-link   d-flex d-md-none" >
+               <i class="fa fa-exclamation-circle" title="Novidades"></i>
+               <a class="align-self-center text-white pl-1"  target="_blank" href="controlador.php?acao=novidade_mostrar&mostrar_todas=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a490941bef56e2abb88dff71baf5b82b15f964244dc7d937b1f3c22a3d479642" title="Novidades" tabindex="56">
+                Novidades
+               </a>
+            </span>
+         </div >
+      <div class="nav-item d-md-flex infraAcaoBarraSistema">  
+      <a class="align-self-center  d-none d-md-block" id="lnkUsuarioSistema" href="controlador.php?acao=infra_acesso_usuario_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d17cf9c70296405d3b73619035eb6aef13d17b2675b61bca6a3f8c003b5a467b" title="Augusto César Guimarães de Souza (07300016600/SEPLAG)" tabindex="57">
+        <img src="/infra_css/svg/usuario_topo.svg?2.0.18" height="24" width="24" class="infraImg"  title="Augusto César Guimarães de Souza (07300016600/SEPLAG)"  />
+      </a>
+      <span title="Augusto César Guimarães de Souza (07300016600/SEPLAG)"  class=" nav-link   d-flex d-md-none" >
+         <img src="/infra_css/svg/usuario_topo.svg?2.0.18" height="24" width="24" class="infraImg"  title="Augusto César Guimarães de Souza (07300016600/SEPLAG)"  />
+         <a class="align-self-center text-white pl-1" id="lnkUsuarioSistema" href="controlador.php?acao=infra_acesso_usuario_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d17cf9c70296405d3b73619035eb6aef13d17b2675b61bca6a3f8c003b5a467b" title="Augusto César Guimarães de Souza (07300016600/SEPLAG)" >
+          Augusto César Guimarães de Souza (07300016600/SEPLAG)
+         </a>
+      </span>
+      </div>
+      
+    <div class="nav-item d-md-flex infraAcaoBarraSistema">
+      <a class="align-self-center  d-none d-md-block" id="lnkInfraConfiguracaoSistema" href="controlador.php?acao=infra_configurar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a601659cc3d14eac3ecee701e5cd335c44d06ae82d2d4f1fba1e0154551e86d0" title="Configurações do Sistema"  tabindex="58">
+        <img src="/infra_css/svg/configuracao.svg?2.0.18" height="24" width="24" class="infraImg" title="Configurações do Sistema"  />
+      </a>
+      <span class=" nav-link   d-flex d-md-none" >
+         <img src="/infra_css/svg/configuracao.svg?2.0.18" height="24" width="24" class="infraImg" title="Configurações do Sistema" />
+         <a class="align-self-center text-white pl-1" id="lnkInfraConfiguracaoSistema" href="controlador.php?acao=infra_configurar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a601659cc3d14eac3ecee701e5cd335c44d06ae82d2d4f1fba1e0154551e86d0" title="Configurações do Sistema" >
+          Configurações
+         </a>
+      </span>
+     </div>
+      
+    <div class="nav-item pr-2 media infraAcaoBarraSistema">
+    <a class="align-self-center d-none d-md-block" id="lnkInfraSairSistema" href="controlador.php?acao=sair&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=db0832e85a5111cdd24ff4ea40ec1dfe91bd6c11a70d7e526634dc0eb5195919" title="Sair do Sistema"  tabindex="59">
+      <img src="/infra_css/svg/sair.svg?2.0.18" height="24" width="24" class="infraImg" />
+    </a>
+    <span class=" nav-link d-flex d-md-none">
+      <img src="/infra_css/svg/sair.svg?2.0.18" height="24" width="24"  class="infraImg" />
+       <a id="lnkInfraSairSistema" class="align-self-center text-white pl-1" href="controlador.php?acao=sair&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=db0832e85a5111cdd24ff4ea40ec1dfe91bd6c11a70d7e526634dc0eb5195919" title="Sair do Sistema" >
+        Sair
+      </a>
+    </span>
+    </div>
+ 
+    
+            </div>
+          </div>
+        </div>
+      </nav>
+     <div id="divInfraAreaTela" style="min-height:0;"  class="w-100  flex-grow-1 d-flex flex-row  divInfraAreaTela">
+<div id="divInfraAreaTelaE" class=" divInfraAreaTelaE d-flex flex-column  infraAreaTelaEExibeGrande infraAreaTelaEEscondePequeno  " >
+<div id="divInfraSidebarMenu" class="infraSidebarMenu flex-grow-1"><div id="divInfraPesquisarMenu"><input type="text" id="txtInfraPesquisarMenu" class="infraPesquisarMenu infraText" onkeyup="infraFiltrarMenuBootstrap()" placeholder="Pesquisar no Menu" title="Pesquisar no Menu"/></div><ul id="infraMenu">
+<li><a style="padding-left:5px" link="acompanhamento_listar" href="controlador.php?acao=acompanhamento_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=7360ffddf87dedc7d2e6ff564c81dfefd2d17f62b6a2b4672812b03d48fadd8e"><img src="menu/acompanhamento_especial.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Acompanhamento Especial</span></a></li>
+<li><a style="padding-left:5px" link="base_conhecimento_pesquisar" href="controlador.php?acao=base_conhecimento_pesquisar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=eb1cc9760207956ab4022788db6ad8a439b3322349099dd0920f9ecabe91fe75"><img src="menu/base_conhecimento.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Base de Conhecimento</span></a></li>
+<li><a style="padding-left:5px" link="" data-toggle="collapse" class="infraAnchorMenu" href="#submenu2" role="button" aria-expanded="false" aria-controls="collapseMenu"><img src="menu/blocos.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Blocos</span><img src="/infra_css/imagens/menu_seta.png" class="infraImgSetaMenu" style="width:12px;"/></a>
+<ul class="collapse" id="submenu2">
+<li><a style="padding-left:35px" link="bloco_assinatura_listar" href="controlador.php?acao=bloco_assinatura_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=8347ab550da4efdc713645ae2694dcd33b4f9cd37a7efd04e8c36f9e99a86568"><span>Assinatura</span></a></li>
+<li><a style="padding-left:35px" link="bloco_interno_listar" href="controlador.php?acao=bloco_interno_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=8fea66eab374615658a8f51eec43d6b607e0135af77268a091e4e487eac77bfe"><span>Internos</span></a></li>
+<li><a style="padding-left:35px" link="bloco_reuniao_listar" href="controlador.php?acao=bloco_reuniao_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=694340285d650300e2f19663411751a714c5e97879c06f819d08d4744e417dd2"><span>Reunião</span></a></li>
+</ul>
+</li>
+<li><a style="padding-left:5px" link="procedimento_controlar" href="controlador.php?acao=procedimento_controlar&reset=1&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=84abd03e883b80af152170ba4a029b50b82eb1fe96b2eb34586fccb5f9c3f5de"><img src="menu/controle_processos.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Controle de Processos</span></a></li>
+<li><a style="padding-left:5px" link="" data-toggle="collapse" class="infraAnchorMenu" href="#submenu7" role="button" aria-expanded="false" aria-controls="collapseMenu"><img src="menu/estatisticas.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Estatísticas</span><img src="/infra_css/imagens/menu_seta.png" class="infraImgSetaMenu" style="width:12px;"/></a>
+<ul class="collapse" id="submenu7">
+<li><a style="padding-left:35px" link="gerar_estatisticas_unidade" href="controlador.php?acao=gerar_estatisticas_unidade&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a0eabf8e14134426d58f6207975480b9627027fe9294cea882e88335c78003f5"><span>Unidade</span></a></li>
+<li><a style="padding-left:35px" link="gerar_estatisticas_desempenho_processos" href="controlador.php?acao=gerar_estatisticas_desempenho_processos&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=bf3069db3c65eba65661814850e7ab3041eb8d4ca3d37415bb1aff08750cd19a"><span>Desempenho de Processos</span></a></li>
+</ul>
+</li>
+<li><a style="padding-left:5px" link="protocolo_modelo_listar" href="controlador.php?acao=protocolo_modelo_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=89fd024ad1070891604d91c203e6ad2154946dbe36d9054c620a6df04c20b4f0"><img src="menu/favoritos.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Favoritos</span></a></li>
+<li><a style="padding-left:5px" link="" data-toggle="collapse" class="infraAnchorMenu" href="#submenu11" role="button" aria-expanded="false" aria-controls="collapseMenu"><img src="menu/grupos.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Grupos</span><img src="/infra_css/imagens/menu_seta.png" class="infraImgSetaMenu" style="width:12px;"/></a>
+<ul class="collapse" id="submenu11">
+<li><a style="padding-left:35px" link="grupo_contato_listar" href="controlador.php?acao=grupo_contato_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=96c7b1f29ded579e19b0878278c8aea91bae5a7e841970d613fa1808a7e934d2"><span>Contatos</span></a></li>
+<li><a style="padding-left:35px" link="grupo_email_listar" href="controlador.php?acao=grupo_email_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=b718140be7adaa744090e41fe8fc69c6acac796fe82ddb4294facce06f08ec8d"><span>E-Mail</span></a></li>
+<li><a style="padding-left:35px" link="grupo_unidade_listar" href="controlador.php?acao=grupo_unidade_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=f855dbce70a32f900a1b0d94bc157dd8d98ac06fa2883f0aed48d60fbaaee22d"><span>Envio</span></a></li>
+<li><a style="padding-left:35px" link="grupo_federacao_listar" href="controlador.php?acao=grupo_federacao_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=528211628acca7222aaf0526c9db4cd44198f16133b9c66dff8b759bee98ccad"><span>Federação</span></a></li>
+</ul>
+</li>
+<li><a style="padding-left:5px" link="procedimento_escolher_tipo" href="controlador.php?acao=procedimento_escolher_tipo&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e923ca221a06753dddebaa5381990fd4b2a9d2f479fdede8158ed019ce5bf1f2"><img src="menu/iniciar_processo.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Iniciar Processo</span></a></li>
+<li><a style="padding-left:5px" link="marcador_listar" href="controlador.php?acao=marcador_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e73acf3765af740855fd288e159f3e51e879c40daf1b515751fbc35e76c2b2f2"><img src="menu/marcadores.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Marcadores</span></a></li>
+<li><a style="padding-left:5px" link="painel_controle_visualizar" href="controlador.php?acao=painel_controle_visualizar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9ac23e15727f707c004f00fa548aa0af46499c6e0763f8b8d29499ee82db916a"><img src="menu/painel_controle.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Painel de Controle</span></a></li>
+<li><a style="padding-left:5px" link="protocolo_pesquisar" href="controlador.php?acao=protocolo_pesquisar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=316e3f11de368517ad102ffc2e4579872ba86f531849c2ac13d0794e76629b18"><img src="menu/pesquisa.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Pesquisa</span></a></li>
+<li><a style="padding-left:5px" link="controle_unidade_gerar" href="controlador.php?acao=controle_unidade_gerar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c840cdc05664457473f10219d99ab94000964f6ea9be6fe5393f15e7ac361c24"><img src="menu/pontos_controle.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Pontos de Controle</span></a></li>
+<li><a style="padding-left:5px" link="procedimento_sobrestado_listar" href="controlador.php?acao=procedimento_sobrestado_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=1173b6d5efeb3b7f6dcd3879eb6fb7b951d88b42436f630da0b57541c3259963"><img src="menu/processos_sobrestados.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Processos Sobrestados</span></a></li>
+<li><a style="padding-left:5px" link="" data-toggle="collapse" class="infraAnchorMenu" href="#submenu22" role="button" aria-expanded="false" aria-controls="collapseMenu"><img src="menu/relatorios.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Relatórios</span><img src="/infra_css/imagens/menu_seta.png" class="infraImgSetaMenu" style="width:12px;"/></a>
+<ul class="collapse" id="submenu22">
+<li><a style="padding-left:35px" link="md_pet_adm_vinc_consultar" href="controlador.php?acao=md_pet_adm_vinc_consultar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=13ef11a87372e7d390d1da5772bc66396b66e52e38b068c8a7eb133f33c0f27e"><span>Vinculações e Procurações Eletrônicas</span></a></li>
+</ul>
+</li>
+<li><a style="padding-left:5px" link="retorno_programado_listar" href="controlador.php?acao=retorno_programado_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4f6dc6d7fb373e08225ac310d5b88bf75641b158d95c3b07cb37feb1cf982184"><img src="menu/retorno_programado.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Retorno Programado</span></a></li>
+<li><a style="padding-left:5px" link="texto_padrao_interno_listar" href="controlador.php?acao=texto_padrao_interno_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=70b12fe34c9014b3880c3913182c7c37dc31b527653064cbfc00fdd34f59d9b1"><img src="menu/texto_padrao.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Textos Padrão</span></a></li>
+<li><a style="padding-left:5px" link="pen_procedimento_expedido_listar" title="Blocos de Trâmite Externo" data-toggle="collapse" class="infraAnchorMenu" href="#submenu26" role="button" aria-expanded="false" aria-controls="collapseMenu"><img src="modulos/pen/imagens/menu//pen_tramite_externo_lote.svg?4.0.12.15-2.0.18" width="24" height="24"/><span>Tramita GOV.BR</span><img src="/infra_css/imagens/menu_seta.png" class="infraImgSetaMenu" style="width:12px;"/></a>
+<ul class="collapse" id="submenu26">
+<li><a style="padding-left:35px" link="md_pen_tramita_em_bloco" href="controlador.php?acao=md_pen_tramita_em_bloco&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=7ba20dc655c2a4421e65bc68eb633fbf9c33463c1e86c6cf05e374bb9b0864e7"><span>Blocos de Trâmite Externo</span></a></li>
+<li><a style="padding-left:35px" link="pen_procedimento_expedido_listar" href="controlador.php?acao=pen_procedimento_expedido_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=1af7b3c99b9f3b8c1f975d1e4cd0585e2ed469fb5337214423910cf3748009eb"><span>Processos em Tramitação Externa</span></a></li>
+</ul>
+</li>
+<li><a style="padding-left:5px" link="" data-toggle="collapse" class="infraAnchorMenu" href="#submenu29" role="button" aria-expanded="false" aria-controls="collapseMenu"><img src="/infra_css/svg/vazio.svg" width="24" height="24"/><span>Links Úteis</span><img src="/infra_css/imagens/menu_seta.png" class="infraImgSetaMenu" style="width:12px;"/></a>
+<ul class="collapse" id="submenu29">
+<li><a style="padding-left:35px" link="" href="https://manuais.processoeletronico.gov.br/pt-br/latest/SEI/index.html?infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c5ab0cbedef736831d8b794b1f4849a2c799569d5edcc7a84c03df34846bba040a94fc5d0046eb6a41bb2bac44966af5f58116135b43a254a59f1da407d7639ee77042a7924fcff44a9f633f3bea919ed5af9c2e4aa8b5b8fd28c7b9e1c7aa58" target="_blank"><span>Manual Usuário SEI 4.0</span></a></li>
+<li><a style="padding-left:35px" link="usuario_externo_logar" href="https://www.sei.mg.gov.br/sei/controlador_externo.php?acao=usuario_externo_logar&id_orgao_acesso_externo=0&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2bd452db326a04a2099c1f8e2be39557595074d49e76654a08a4af0f6bd314eb0a94fc5d0046eb6a41bb2bac44966af5f58116135b43a254a59f1da407d7639ee77042a7924fcff44a9f633f3bea919ed5af9c2e4aa8b5b8fd28c7b9e1c7aa58" target="_blank"><span>Usuário Externo</span></a></li>
+<li><a style="padding-left:35px" link="protocolo_pesquisar" href="https://www.sei.mg.gov.br/sei/modulos/pesquisa/md_pesq_processo_pesquisar.php?acao_externa=protocolo_pesquisar&acao_origem_externa=protocolo_pesquisar&id_orgao_acesso_externo=0&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e3c0b6107ef0373c3a74c86fa8cc5d17ccf6590ceb3264264960ae33ef89d2710a94fc5d0046eb6a41bb2bac44966af5f58116135b43a254a59f1da407d7639ee77042a7924fcff44a9f633f3bea919ed5af9c2e4aa8b5b8fd28c7b9e1c7aa58" target="_blank"><span>Pesquisa Pública</span></a></li>
+<li><a style="padding-left:35px" link="" href="https://www.mg.gov.br/system/files/media/planejamento/documento_detalhado/2024/atendimento/manual/tramita-gov.pdf?infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c5ab0cbedef736831d8b794b1f4849a2c799569d5edcc7a84c03df34846bba040a94fc5d0046eb6a41bb2bac44966af5f58116135b43a254a59f1da407d7639ee77042a7924fcff44a9f633f3bea919ed5af9c2e4aa8b5b8fd28c7b9e1c7aa58" target="_blank" title="Tramita GOV.BR"><span>Tramita GOV.BR</span></a></li>
+<li><a style="padding-left:35px" link="" href="https://www.mg.gov.br/system/files/media/planejamento/documento_detalhado/2024/atendimento/manual/app-protocolo-1.pdf?infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c5ab0cbedef736831d8b794b1f4849a2c799569d5edcc7a84c03df34846bba040a94fc5d0046eb6a41bb2bac44966af5f58116135b43a254a59f1da407d7639ee77042a7924fcff44a9f633f3bea919ed5af9c2e4aa8b5b8fd28c7b9e1c7aa58" title="Aplicativo Protocolo"><span>App Protocolo</span></a></li>
+<li><a style="padding-left:35px" link="" href="https://planejamento.mg.gov.br/sites/default/files/documentos/gestao-governamental/gestao-de-ti/politica_e_termo_de_uso_sei_atualizadas.pdf?infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c5ab0cbedef736831d8b794b1f4849a2c799569d5edcc7a84c03df34846bba040a94fc5d0046eb6a41bb2bac44966af5f58116135b43a254a59f1da407d7639ee77042a7924fcff44a9f633f3bea919ed5af9c2e4aa8b5b8fd28c7b9e1c7aa58" target="_blank" title="Política de Privacidade do SEI"><span>Política de Privacidade</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<script type="text/javascript">infraSetarMenuBootstrap("procedimento_controlar")</script><!--LOGO--><!--MODULOS--></div>
+<div id="divInfraAreaTelaD"  class=" flex-grow-1 px-3" >
+<div id="divInfraBarraAcesso" class="infraBarraAcesso"><span><a title="Ver últimos acessos" href="controlador.php?acao=infra_acesso_usuario_listar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d17cf9c70296405d3b73619035eb6aef13d17b2675b61bca6a3f8c003b5a467b">Último acesso na sexta-feira, 31 de outubro às 19:09.</a></span></div>
+<div id="divInfraBarraLocalizacao" class="infraBarraLocalizacao" tabindex="450">Controle de Processos</div>
+
+
+<form id="frmProcedimentoControlar" class="h-100" method="post" action="controlador.php?acao=procedimento_controlar&acao_origem=procedimento_controlar&tipo_filtro=&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6136d6ff5754ce54d04d0007e7388a3ed5995a1efe26fa17e7c53010540a4e8b">
+    <div id="divControleProcessosConteudo" class="h-100  d-flex flex-column">
+        
+        <div class="barraBotoesSEIMovel">
+            <a class="btn d-md-none" data-toggle="collapse" href="#collapseControle" role="button" aria-expanded="true" aria-controls="collapseControle" title="Exibir/Ocultar Ícones">
+                <img src="/infra_css/svg/menu_pontos.svg" width="32" height="32" />
+            </a>
+        </div>
+
+        <div class="collapse d-md-block" id="collapseControle">
+            <div id="divComandos" class="barraBotoesSEI">
+                <a href="#" onclick="return acaoControleProcessos('controlador.php?acao=procedimento_enviar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=306f63315c84da9b1faaccc82f1dd1c4947f3bc046310d23b30380cd0cc6938a', true, false);" tabindex="451" ><img src="svg/processo_enviar.svg?11" alt="Enviar Processo" title="Enviar Processo"/></a>
+<a href="#" onclick="return acaoControleProcessos('controlador.php?acao=procedimento_atualizar_andamento&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=fe55f06ba6bd9dfbd51fc5251ff8ff940ccc49ccbeb2ec2d0beef14c7359a06c', true, true);" tabindex="451" ><img src="svg/processo_atualizar_andamento.svg?11" alt="Atualizar Andamento" title="Atualizar Andamento"/></a>
+<a href="#" onclick="return acaoControleProcessos('controlador.php?acao=procedimento_atribuicao_cadastrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=bd3bae836443c5e8430841d0f9d83e6057c8c4e7cc50c8e6b72bf2c1ac77c1a0', true, false);" tabindex="451" ><img src="svg/processo_atribuir.svg?11"  alt="Atribuição de Processos" title="Atribuição de Processos"/></a>
+<a href="#" onclick="return acaoBlocoProcessar();" tabindex="451" ><img src="svg/bloco_incluir_protocolo.svg?11"  alt="Incluir em Bloco" title="Incluir em Bloco"/></a>
+<a href="#" onclick="return acaoControleProcessos('controlador.php?acao=procedimento_sobrestar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=939041241504b6e3ab8e33c10d102f85bcd33a0e9f4f2cd8d4c5d7ad767451f6', true, false);" tabindex="451" ><img src="svg/processo_sobrestar.svg?11"  alt="Sobrestar Processo" title="Sobrestar Processo"/></a>
+<a href="#" onclick="return acaoControleProcessos('controlador.php?acao=procedimento_concluir&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=46b77f164f6c78fdc7061b7ba080010f9c46e5eb2b7393e7bdb7ed62f2862100', true, true);" tabindex="451" ><img src="svg/processo_concluir.svg?11"  alt="Concluir Processo nesta Unidade" title="Concluir Processo nesta Unidade"/></a>
+<a href="#" onclick="return acaoControleProcessos('controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9f29783fdc4e086b834a87b50f9de90c8ff0cbb57ca100f8b939c3e4c9c4a4cb', true, true);" tabindex="451" ><img src="svg/anotacao_cadastro.svg?11"  alt="Anotações" title="Anotações"/></a>
+<a href="#" onclick="return acaoControleProcessos('controlador.php?acao=acompanhamento_cadastrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=729958c696612242d4dddc441d478bcb40c40ee6b1a23ad0cbd0795bf287a97f', true, true);" tabindex="451" ><img src="svg/acompanhamento_especial_cadastro.svg?11"  alt="Acompanhamento Especial" title="Acompanhamento Especial"/></a>
+<a href="#" onclick="return acaoControleProcessos('controlador.php?acao=documento_gerar_multiplo&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=b3007002684836e1b605552083da2827ee540b34b3c0e1b27c8e047e535a6907', true, true);" tabindex="451" ><img src="svg/documento_incluir.svg?11"  alt="Incluir Documento" title="Incluir Documento"/></a>
+<a href="#" onclick="return acaoControleProcessos('controlador.php?acao=andamento_marcador_cadastrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e7fac075e04be082351c6d3df825de47b02e38fbe95d3fb18851d6e77065a304', true, true);" tabindex="451" ><img src="svg/marcador_adicionar.svg?11"  alt="Adicionar Marcador" title="Adicionar Marcador"/></a>
+<a href="#" onclick="return acaoRemoverMarcadorProcessar('controlador.php?acao=andamento_marcador_remover&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a5ab210f2225b55b98bb567db5059a0882c287085fd1de27643652dfd4bec900', true, true);" tabindex="451" ><img src="svg/marcador_remover.svg?11"  alt="Remover Marcador" title="Remover Marcador"/></a>
+<a href="#" onclick="return acaoControleProcessos('controlador.php?acao=controle_prazo_definir&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=ff3d6572ff1079f60e3b54a9d118b03626283c8c09fed9c63b5335e47cf7d95e', true, true);" tabindex="451" ><img src="svg/controle_prazo_gerenciar.svg?11"  alt="Controle de Prazos" title="Controle de Prazos"/></a>
+            </div>
+        </div>
+
+        <div id="divFiltro" class="d-flex justify-content-start">
+            
+<div class="divLink"><a href="javascript:void(0);" onclick="trocarVisualizacao('D');" class="ancoraPadraoPreta" tabindex="452">Visualização detalhada</a></div>
+                        
+<div class="divLink ml-0 ml-md-2 "><a href="javascript:void(0);" onclick="verMeusProcessos('M');" class="ancoraPadraoPreta" tabindex="453">Ver processos atribuídos a mim</a></div>
+            
+<div class="divLink"><a href="controlador.php?acao=procedimento_controlar&acao_origem=procedimento_controlar&tipo_filtro=M&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4aaafbe83108daff20a78e0ea252ce6062c9f764f75074d98974a43979093adb" class="ancoraPadraoPreta" tabindex="454">Ver por marcadores</a></div>
+            
+<div class="divLink"><a href="controlador.php?acao=procedimento_controlar&acao_origem=procedimento_controlar&tipo_filtro=P&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=053a99b90d15366334e28554fddcc039ea85bea56eebe77c5b46f3b43912cd8b" class="ancoraPadraoPreta" tabindex="455">Ver por tipo de processo</a></div>
+        </div>
+        <div style="overflow-y: auto;min-height: 200px;margin-top:5px;" class="flex-grow-1 row mx-0 mb-0  d-flex divTabelaProcesso" id="divTabelaProcesso">
+        <div class="d-flex justify-content-center w-100 d-md-none" style="height: 25px;">
+                <a class="ml-0 mt-1 pl-0 ancoraPadraoAzul   d-md-none mx-auto filtro"  href="#" onclick="alterarVisualizacaoTabela('hdnExibirRecebidos','true','hdnExibirGerados')" >
+                  Processos Recebidos
+                </a>
+                 <a class="ml-0 mt-1 pl-0 ancoraPadraoAzul  d-md-none mx-auto filtro" href="#" onclick="alterarVisualizacaoTabela('hdnExibirGerados','true','hdnExibirRecebidos')">
+                    Processos Gerados
+                </a>
+        </div>     <div id="divRecebidos" class="ml-0  pl-0 d-none  d-md-block  col-12 col-md-6">
+<div id="divRecebidosAreaPaginacaoSuperior" class="infraAreaPaginacao">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="selRecebidosPaginacaoSuperior" name="selRecebidosPaginacaoSuperior" onchange="infraAcaoPaginar('=',this.value,'Recebidos', null);" class="infraSelect" aria-label="Escolher Página" style="display:inline;">
+<option value="0" selected="selected" >1</option>
+<option value="1">2</option>
+<option value="2">3</option>
+</select>&nbsp;&nbsp;
+                    <a id="lnkRecebidosProximaPaginaSuperior" 
+                        href="javascript:void(0);" 
+                        onclick="infraAcaoPaginar('+',0,'Recebidos', null);" 
+                        title="Próxima Página" 
+                        ><img src="/infra_css/svg/paginacao_proxima.svg" 
+                            title="Próxima Página" 
+                            alt="Próxima Página" 
+                            class="infraImg"/></a>&nbsp;&nbsp;
+
+&nbsp;                    <a id="lnkRecebidosUltimaPaginaSuperior" 
+                        href="javascript:void(0);" 
+                        onclick="infraAcaoPaginar('=',2,'Recebidos', null);" 
+                        title="Última Página" 
+                        ><img src="/infra_css/svg/paginacao_ultima.svg" 
+                            title="Última Página" 
+                            alt="Última Página" 
+                            class="infraImg"/></a></div>
+<div id="divRecebidosAreaTabela" class="infraAreaTabela" >
+<table id="tblProcessosRecebidos" width="100%" border="0" cellspacing="0" cellpadding="1" class="infraTable tabelaControle" summary="Tabela de Processos Recebidos.">
+<caption class="infraCaption">104 registros - 1 a 50:</caption><tr><th class="infraTh" width="5%" align="center"><a href="javascript:void(0);" id="lnkInfraCheck" onclick="infraSelecaoMultipla('Recebidos');"><img src="/infra_css/svg/check.svg" id="imgRecebidosCheck" title="Selecionar Tudo" alt="Selecionar Tudo" class="infraImg" /></a></th>
+<th class="infraTh" colspan="3">Recebidos</th>
+</tr>
+<tr id="P912619680" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-912619680" name="ID-912619680"></a><input  class="infraCheckbox" id="chkRecebidosItem0" name="chkRecebidosItem0"  title="1500.01.0377607/2025-24" type="checkbox" value="912619680" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=912619680&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=f115674ffe0311e17b5444e21e8d846cdff024cffb3fbb39c09d0d38a9ecc7cc" onmouseover="return infraTooltipMostrar('LEIDI SILVA ALVES - Centro de Automatização e Inteligência Artificial - Automatiza.MG','RH: Estagiário');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0377607/2025-24</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100283952&id_procedimento=912619680&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=460f72f2abc4e610f67b636217dff426ac4a54516b2b7f3d264831f979880121" title="Atribuído para Clarisse Fidelis Silva Campos" class="ancoraSigla">11726461637</a>)</td>
+</tr>
+<tr id="P914392670" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-914392670" name="ID-914392670"></a><input  class="infraCheckbox" id="chkRecebidosItem1" name="chkRecebidosItem1"  title="1500.01.0410512/2025-12" type="checkbox" value="914392670" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=914392670&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=099f4c60082c2fda808de93b1d8abc9231be2bcce08b673ee6a21e52fcda0c48" onmouseover="return infraTooltipMostrar('RH SEPLAG - Levantamento de demandas por capacitações/congressos/simpósios','Pessoal: Capacitação');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0410512/2025-12</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P913405734" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-913405734" name="ID-913405734"></a><input  class="infraCheckbox" id="chkRecebidosItem2" name="chkRecebidosItem2"  title="1500.01.0392262/2025-02" type="checkbox" value="913405734" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=913405734&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=76a96261ddd07a6b9b5dd1ff290fcd90347818557722a36097ea75e4697db690" onmouseover="return infraTooltipMostrar('','RH: Folha de Pagamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0392262/2025-02</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P860455635" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-860455635" name="ID-860455635"></a><input  class="infraCheckbox" id="chkRecebidosItem3" name="chkRecebidosItem3"  title="1500.01.0376675/2023-71" type="checkbox" value="860455635" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=860455635&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c991ff5ea461ab6d893fef1cf7096f89a9a6931cee4809e745d404f4debb788e" onmouseover="return infraTooltipMostrar('Estágio Cora','08970323651 em 13/11/2023 10:12');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=860455635&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=909534ec9b6a35be0b5ee0e5964b1dccc9fc4fbedddadc5f53ea37e90e3128f2" onmouseover="return infraTooltipMostrar('Estágio Remunerado Augusta Cora Lamas Lopes','RH: Estágio');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0376675/2023-71</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100003934&id_procedimento=860455635&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=f24545fa105b6663faa0207c8357aee381c63331436587afcb173255b6c7be50" title="Atribuído para Ana Flavia de Castro Morais" class="ancoraSigla">09152773604</a>)</td>
+</tr>
+<tr id="P912862117" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-912862117" name="ID-912862117"></a><input  class="infraCheckbox" id="chkRecebidosItem4" name="chkRecebidosItem4"  title="1500.01.0382004/2025-33" type="checkbox" value="912862117" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=912862117&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6bfcdac148483e252dd46e273ab43ce8e9e38fb7f658b2f39d512ca08951de0d" onmouseover="return infraTooltipMostrar('','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0382004/2025-33</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P911978053" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-911978053" name="ID-911978053"></a><input  class="infraCheckbox" id="chkRecebidosItem5" name="chkRecebidosItem5"  title="1500.01.0365569/2025-03" type="checkbox" value="911978053" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=911978053&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=f2690059a3f6aa4b469f6c1cf893fff7625400d37e593e65de8227d488959620" onmouseover="return infraTooltipMostrar('Contratação de estagiário Automatiza.MG','RH: Estágio');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0365569/2025-03</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100283952&id_procedimento=911978053&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=79f70d106f0bee9ebb19493d248147a521f4359170158ae9ef2facd5dbaad61e" title="Atribuído para Clarisse Fidelis Silva Campos" class="ancoraSigla">11726461637</a>)</td>
+</tr>
+<tr id="P909414287" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-909414287" name="ID-909414287"></a><input  class="infraCheckbox" id="chkRecebidosItem6" name="chkRecebidosItem6"  title="1450.01.0159986/2025-35" type="checkbox" value="909414287" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=909414287&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=226cfda611de16454d24772f9038a09457210f2c493d9f35ee2e20426a7ff991" onmouseover="return infraTooltipMostrar('Liberação de acesso ao Portal','Gestão de TI: Acesso a Sistemas Corporativos');" onmouseout="return infraTooltipOcultar();" >1450.<wbr />01.<wbr />0159986/2025-35</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P10833412" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-10833412" name="ID-10833412"></a><input  class="infraCheckbox" id="chkRecebidosItem7" name="chkRecebidosItem7"  title="1500.01.0045755/2019-59" type="checkbox" value="10833412" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=10833412&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=dd19e596fd7212e7a1b510f3594ebe927b4c55e533ff560f2c171e86b3570bf2" onmouseover="return infraTooltipMostrar('CONSULTA Questionamento possibilidade ou não de eliminar exigência de autenticação em documentos conforme Leis Federais Nsº 13.460/2017 e 13.726/2018, e Decreto Estadual Nº 47.441/2018.','01484147618 em 28/05/2020 22:38');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a><a href="controlador.php?acao=andamento_marcador_gerenciar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=10833412&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=093d779b8d2f92f8eb5d9153a2a53d18ffded73b9e9cef9160a7416a6ad63120" onmouseover="return infraTooltipMostrar('','Simplificação');" onmouseout="return infraTooltipOcultar();"><img src="svg/marcador_amarelo.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=10833412&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=dd52ed6429ab64448cfcda068607a18f748cbae3affe5825ce3f933bf54e2636" onmouseover="return infraTooltipMostrar('','Consulta Jurídica');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0045755/2019-59</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P908970174" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-908970174" name="ID-908970174"></a><input  class="infraCheckbox" id="chkRecebidosItem8" name="chkRecebidosItem8"  title="1500.01.0310980/2025-88" type="checkbox" value="908970174" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoNaoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=908970174&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0846f117a943546e8be42d6449b10d6488ad3ce8bfee4dad636b1253afb2ca34" onmouseover="return infraTooltipMostrar('','RH: Folha de Pagamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0310980/2025-88</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P906213036" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-906213036" name="ID-906213036"></a><input  class="infraCheckbox" id="chkRecebidosItem9" name="chkRecebidosItem9"  title="1500.01.0261830/2025-81" type="checkbox" value="906213036" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=906213036&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e920422cce56e3fb2867e7600e649cc603e93b6d80f89eb2cfd31f47271d633c" onmouseover="return infraTooltipMostrar('SCAIA- Cargas Patrimoniais 2025','Patrimônio: Gestão de Bens Móveis');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0261830/2025-81</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P901600011" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-901600011" name="ID-901600011"></a><input  class="infraCheckbox" id="chkRecebidosItem10" name="chkRecebidosItem10"  title="1500.01.0180079/2025-26" type="checkbox" value="901600011" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=901600011&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e05783dd56d265601da18baed1151d0effc97fff11894e27c7e202ae12c7bca3" onmouseover="return infraTooltipMostrar('','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0180079/2025-26</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P898888603" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-898888603" name="ID-898888603"></a><input  class="infraCheckbox" id="chkRecebidosItem11" name="chkRecebidosItem11"  title="1500.01.0131327/2025-40" type="checkbox" value="898888603" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=898888603&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=b3ff4d0cc88e5c992aaebf09415853e3d0335b62e9fd82bb70d30e437ce684cc" onmouseover="return infraTooltipMostrar('Atualizações de competências - SUBCOMP e SUBGEF - Decreto nº 48.988, de 31 de janeiro de 2025','Orientação aos Órgãos e Entidades: Políticas e Regras de Compras Públicas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0131327/2025-40</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P896691178" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-896691178" name="ID-896691178"></a><input  class="infraCheckbox" id="chkRecebidosItem12" name="chkRecebidosItem12"  title="1500.01.0090449/2025-80" type="checkbox" value="896691178" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=896691178&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=bd6229e8d6d654781382993fe60f752e7069afb73144d8639fe257a8930b5c34" onmouseover="return infraTooltipMostrar('Engajamento de servidores - Valores e Práticas, “Nosso Jeito de Ser e Fazer”','Pessoal: Capacitação');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0090449/2025-80</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P893476371" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-893476371" name="ID-893476371"></a><input  class="infraCheckbox" id="chkRecebidosItem13" name="chkRecebidosItem13"  title="1500.01.0026943/2025-73" type="checkbox" value="893476371" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=893476371&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9a0a9d7b89307574f04b4fd7c74fe0914c2e3da623cbe6e9f2229561371cdb6d" onmouseover="return infraTooltipMostrar('','RH: EPPGG - Movimentação e Exercício');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0026943/2025-73</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P893846219" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-893846219" name="ID-893846219"></a><input  class="infraCheckbox" id="chkRecebidosItem14" name="chkRecebidosItem14"  title="2250.01.0000175/2025-68" type="checkbox" value="893846219" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=893846219&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=b82fc7ad79e4d450577a18c50b1e78f4713b88d99dddce7d866fdfd48ff925c4" onmouseover="return infraTooltipMostrar('','Gestão Institucional: Comissões Técnicas. Conselhos. Grupos de Trabalho. Juntas. Comitês. Câmaras');" onmouseout="return infraTooltipOcultar();" >2250.<wbr />01.<wbr />0000175/2025-68</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P892920916" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-892920916" name="ID-892920916"></a><input  class="infraCheckbox" id="chkRecebidosItem15" name="chkRecebidosItem15"  title="1500.01.0014050/2025-51" type="checkbox" value="892920916" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=892920916&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9a7febae8bcb6ea0ba98fea82bf72f4e28c6293656df5b296449e620f7a24012" onmouseover="return infraTooltipMostrar('SEPLAG - Levantamento de demandas equipamentos de trabalho - 2025','Comunicação: Interna');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0014050/2025-51</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P866330382" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-866330382" name="ID-866330382"></a><input  class="infraCheckbox" id="chkRecebidosItem16" name="chkRecebidosItem16"  title="1410.01.0000224/2024-76" type="checkbox" value="866330382" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoNaoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=866330382&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=8aacbca4d48e5f59e3399a3485506aef192e1fb662884295ddb95100819623cf" onmouseover="return infraTooltipMostrar('Publicações/Atos COPEFIC e CEFIC_2024','Organização e Funcionamento do Órgão: Normas, Regulamentos, Diretrizes ou Procedimentos');" onmouseout="return infraTooltipOcultar();" >1410.<wbr />01.<wbr />0000224/2024-76</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P891462069" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-891462069" name="ID-891462069"></a><input  class="infraCheckbox" id="chkRecebidosItem17" name="chkRecebidosItem17"  title="1500.01.0699975/2024-95" type="checkbox" value="891462069" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoNaoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=891462069&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6e303c14d6871f78625e4ee16b6bbe164e756979badc6dfd03ecda8d8aae247c" onmouseover="return infraTooltipMostrar('MGS - REVEZAMENTO  NATAL E ANO NOVO - ENCERRAMENTO 2024','Gestão de Contrato: MGS - Terceirizados');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0699975/2024-95</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P886446241" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-886446241" name="ID-886446241"></a><input  class="infraCheckbox" id="chkRecebidosItem18" name="chkRecebidosItem18"  title="1500.01.0576399/2024-41" type="checkbox" value="886446241" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=886446241&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9fbb402c9912643f88b0bc9a8e9e53afe78710f39a9a7d54be3f6cb4407cdcd7" onmouseover="return infraTooltipMostrar('Abertura dos Elevadores da CA (prédio GERAIS) e alteração na diretriz de teletrabalho da SEPLAG','Comunicação: Interna');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0576399/2024-41</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P888268937" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-888268937" name="ID-888268937"></a><input  class="infraCheckbox" id="chkRecebidosItem19" name="chkRecebidosItem19"  title="1500.01.0621740/2024-71" type="checkbox" value="888268937" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=888268937&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a0c6d9ab0e1544d80504b5de5ab52ad239f4e51d5f70bde61f901123346004a4" onmouseover="return infraTooltipMostrar('Engajamento de servidores - Valores e Práticas, “Nosso Jeito de Ser e Fazer” - Equipe de Sustentação','Pessoal: Capacitação');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0621740/2024-71</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P888908324" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-888908324" name="ID-888908324"></a><input  class="infraCheckbox" id="chkRecebidosItem20" name="chkRecebidosItem20"  title="2250.01.0001794/2024-08" type="checkbox" value="888908324" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoNaoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=888908324&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=5896a67578087f7fdfd84a0a04c4c13478172540e7e21d3db04ae9a3ee5bc9f8" onmouseover="return infraTooltipMostrar('Indisponibilidade temporária dos sistemas da Jucemg entre 20 e 24 de Novembro','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >2250.<wbr />01.<wbr />0001794/2024-08</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P888194712" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-888194712" name="ID-888194712"></a><input  class="infraCheckbox" id="chkRecebidosItem21" name="chkRecebidosItem21"  title="1500.01.0619642/2024-69" type="checkbox" value="888194712" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=888194712&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0d128fb82fa55b66012af4f61dccb68fa948b7b7ebab18cc3e442b3d65ca8c69" onmouseover="return infraTooltipMostrar('Ressarcimento Yan - Semana Inovação','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0619642/2024-69</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P881179982" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-881179982" name="ID-881179982"></a><input  class="infraCheckbox" id="chkRecebidosItem22" name="chkRecebidosItem22"  title="1500.01.0426873/2024-06" type="checkbox" value="881179982" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=881179982&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0f09c45baab7e869c038148bc372f1a6c8ca521e5c95f3d0b75875a90d9a93cb" onmouseover="return infraTooltipMostrar('Ressarcimento Gabriel Braico Dornas - SECOP','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0426873/2024-06</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P883556718" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-883556718" name="ID-883556718"></a><input  class="infraCheckbox" id="chkRecebidosItem23" name="chkRecebidosItem23"  title="2250.01.0001380/2024-31" type="checkbox" value="883556718" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=883556718&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=372f810fe42b029f623a9c80a4a2d76aa9ef3289e60f7b4b3ac7cc8584ca5ec9" onmouseover="return infraTooltipMostrar('','Gestão Institucional: Comissões Técnicas. Conselhos. Grupos de Trabalho. Juntas. Comitês. Câmaras');" onmouseout="return infraTooltipOcultar();" >2250.<wbr />01.<wbr />0001380/2024-31</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P882483118" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-882483118" name="ID-882483118"></a><input  class="infraCheckbox" id="chkRecebidosItem24" name="chkRecebidosItem24"  title="1500.01.0461576/2024-45" type="checkbox" value="882483118" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=882483118&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2c9cf95fec1d756640dd4f3811105b389e4be97c959105830b51af174efa523d" onmouseover="return infraTooltipMostrar('Ressarcimento CONSAD Yan','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0461576/2024-45</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P881465205" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-881465205" name="ID-881465205"></a><input  class="infraCheckbox" id="chkRecebidosItem25" name="chkRecebidosItem25"  title="1500.01.0433855/2024-60" type="checkbox" value="881465205" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=881465205&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=71424c3b2151ca0053d7e0844463ea51f579f4553170c769bbfb53874300b568" onmouseover="return infraTooltipMostrar('Ressarcimento SECOP - Yan','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0433855/2024-60</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P876246256" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-876246256" name="ID-876246256"></a><input  class="infraCheckbox" id="chkRecebidosItem26" name="chkRecebidosItem26"  title="1500.01.0308625/2024-44" type="checkbox" value="876246256" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=876246256&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6e5be04e35650146ba7965928c49a3b0e3cacd54dd50186ebd9707e0e32a5c39" onmouseover="return infraTooltipMostrar('Convite e solicitação para divulgação do evento: Ciclo de Palestras para Gestores','Eventos: Promovidos pelo órgão (Congressos. Conferências, Treinamentos. Workshops...)');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0308625/2024-44</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P877120334" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-877120334" name="ID-877120334"></a><input  class="infraCheckbox" id="chkRecebidosItem27" name="chkRecebidosItem27"  title="5140.01.0002858/2024-19" type="checkbox" value="877120334" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=877120334&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=87817a6f70b3818ee85532c5ee8ebb239f8e7668e34ba6fcbbc21d74fef6a655" onmouseover="return infraTooltipMostrar('Inova 2024 - 6ª Semana de Inovação da Prodemge','Gestão Prodemge');" onmouseout="return infraTooltipOcultar();" >5140.<wbr />01.<wbr />0002858/2024-19</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P878657786" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-878657786" name="ID-878657786"></a><input  class="infraCheckbox" id="chkRecebidosItem28" name="chkRecebidosItem28"  title="1260.01.0129000/2024-49" type="checkbox" value="878657786" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=878657786&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=b0cf8b64473613438010a0375a9bf1e287d825dd27c28d6659eee7a8cb10ae5b" onmouseover="return infraTooltipMostrar('Solicitação de Autorização para Pesquisa Acadêmica - SEPLAG','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1260.<wbr />01.<wbr />0129000/2024-49</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P876404116" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-876404116" name="ID-876404116"></a><input  class="infraCheckbox" id="chkRecebidosItem29" name="chkRecebidosItem29"  title="1500.01.0313808/2024-74" type="checkbox" value="876404116" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=876404116&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6945f5c56d2f93fe252558e1577f6ab2deae66e9211b2c131dfa316685d83c50" onmouseover="return infraTooltipMostrar('Orientações sobre procedimentos licitatórios realizados pela SUBCOMP e DCCC','Orientação aos Órgãos e Entidades: Políticas e Regras de Compras Públicas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0313808/2024-74</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P876089971" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-876089971" name="ID-876089971"></a><input  class="infraCheckbox" id="chkRecebidosItem30" name="chkRecebidosItem30"  title="1500.01.0303972/2024-60" type="checkbox" value="876089971" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=876089971&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=8e4f3576090dd0e0e23a26c1f0440cd93bebbcfc4385fd5edca04ba6bcb34509" onmouseover="return infraTooltipMostrar('Aguardando assinatura do Gabriel e testemunhas','01605225606 em 10/06/2024 11:33');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=876089971&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e49d05e12cb30236b0b715a29c64660428e680699bb4d50a936aadb3928a2e03" onmouseover="return infraTooltipMostrar('Ressarcimento Gabriel Braico Dornas','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0303972/2024-60</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P876368415" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-876368415" name="ID-876368415"></a><input  class="infraCheckbox" id="chkRecebidosItem31" name="chkRecebidosItem31"  title="1500.01.0312854/2024-30" type="checkbox" value="876368415" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=876368415&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=623cb0ee97066c821dc3664293836e400b3175db47ba826033e4e02d143951a7" onmouseover="return infraTooltipMostrar('Aguardando assinatura Yan e testemunhas ateste','01605225606 em 13/06/2024 09:03');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=876368415&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=58badda59edd1665a866b9a3d10006e324c8f02a2a56ec8e041a2cd5a8f87c4e" onmouseover="return infraTooltipMostrar('Ressarcimento Yan - Semana Inovação','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0312854/2024-30</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P876231364" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-876231364" name="ID-876231364"></a><input  class="infraCheckbox" id="chkRecebidosItem32" name="chkRecebidosItem32"  title="1500.01.0308196/2024-84" type="checkbox" value="876231364" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=876231364&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a3d149a572e328619b4e91fa7780d3b88dce06ff37db4bce71dc253772f6be90" onmouseover="return infraTooltipMostrar('Fechamento dos Andares','Outras Atividades/Transações de Gestão Institucional: Comunicados e Informes');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0308196/2024-84</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P875935556" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-875935556" name="ID-875935556"></a><input  class="infraCheckbox" id="chkRecebidosItem33" name="chkRecebidosItem33"  title="1500.01.0299428/2024-43" type="checkbox" value="875935556" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=875935556&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=62a053fc176bc6097d22e0e329b4801a7a81fbb912afe9dce03bfda9efb34124" onmouseover="return infraTooltipMostrar('PLANO DE TRABALHO – SEPLAG E SEJUSP (Projeto Automatiza MG)','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0299428/2024-43</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P874597216" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-874597216" name="ID-874597216"></a><input  class="infraCheckbox" id="chkRecebidosItem34" name="chkRecebidosItem34"  title="1500.01.0265079/2024-49" type="checkbox" value="874597216" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=874597216&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=86a8c450adaee752ef6d807ee7bd5c83172706947b0ba3f7a519bba22f93d45e" onmouseover="return infraTooltipMostrar('Adequação de Espaços na Cidade Administrativa','Outras Atividades/Transações de Gestão Institucional: Comunicados e Informes');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0265079/2024-49</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P874927014" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-874927014" name="ID-874927014"></a><input  class="infraCheckbox" id="chkRecebidosItem35" name="chkRecebidosItem35"  title="1500.01.0273359/2024-74" type="checkbox" value="874927014" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoNaoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=874927014&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91989fc385b9c67d37e3fbe661b06bec5aaf2985e33187bea365244782bbc8a3" onmouseover="return infraTooltipMostrar('Orientações - SEPLAG - SUBGEF - Teletrabalho Excepcional - Patrimônio e Bens de TIC','Outras Atividades/Transações Referentes a Organização e Funcionamento: Informações sobre o Órgão');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0273359/2024-74</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P872541593" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-872541593" name="ID-872541593"></a><input  class="infraCheckbox" id="chkRecebidosItem36" name="chkRecebidosItem36"  title="1510.01.0089293/2024-96" type="checkbox" value="872541593" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=872541593&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9bfef5afb9dde66ead0ccd3cfc09ef2454e68bb36f8f6c07d13af70e7ecc6c3d" onmouseover="return infraTooltipMostrar('','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1510.<wbr />01.<wbr />0089293/2024-96</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P872551218" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-872551218" name="ID-872551218"></a><input  class="infraCheckbox" id="chkRecebidosItem37" name="chkRecebidosItem37"  title="1500.01.0211863/2024-20" type="checkbox" value="872551218" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=872551218&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=91931f405c5c7dd2136a4c191b5561b82ff156e40870429fa5ca100cc387ea78" onmouseover="return infraTooltipMostrar('Termo de Confidencialidade - SCPMSO','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0211863/2024-20</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P868652836" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-868652836" name="ID-868652836"></a><input  class="infraCheckbox" id="chkRecebidosItem38" name="chkRecebidosItem38"  title="1500.01.0097670/2024-86" type="checkbox" value="868652836" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=868652836&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=808e31395c2a12fb8343d80b0975f67ca129d9d94950a05e9ca3b3be4286de5d" onmouseover="return infraTooltipMostrar('Circular - Solicitação de Acesso à Solução de Business Intelligence - BI','Gestão de Contrato');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0097670/2024-86</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P865499879" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-865499879" name="ID-865499879"></a><input  class="infraCheckbox" id="chkRecebidosItem39" name="chkRecebidosItem39"  title="1710.01.0000035/2024-21" type="checkbox" value="865499879" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=865499879&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9b4a9f69a057f2f7b95db399296549bce83001525996b12849825f9af16252a9" onmouseover="return infraTooltipMostrar('Nova Assinatura E-mails padrão, que deverá ser utilizada por toda a Administração','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1710.<wbr />01.<wbr />0000035/2024-21</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P865779472" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-865779472" name="ID-865779472"></a><input  class="infraCheckbox" id="chkRecebidosItem40" name="chkRecebidosItem40"  title="1710.01.0000043/2024-96" type="checkbox" value="865779472" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=865779472&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d412e7f5ea776c027219b1254d453603a24fddc97bf981d0ed4f3cfc69530cfe" onmouseover="return infraTooltipMostrar('Diretrizes Gerais para a Política de Comunicação Digital','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1710.<wbr />01.<wbr />0000043/2024-96</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P867063697" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-867063697" name="ID-867063697"></a><input  class="infraCheckbox" id="chkRecebidosItem41" name="chkRecebidosItem41"  title="1500.01.0051475/2024-28" type="checkbox" value="867063697" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=867063697&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0ff4116a6b4b4982b459f9718ed254c56d918f64b7f3e252190e1febffb386b1" onmouseover="return infraTooltipMostrar('Solicita Código Fonte API SEI','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0051475/2024-28</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P79121570" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-79121570" name="ID-79121570"></a><input  class="infraCheckbox" id="chkRecebidosItem42" name="chkRecebidosItem42"  title="1500.01.0229947/2023-53" type="checkbox" value="79121570" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=79121570&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=bda0c687bd59a40798cc0155fc56a9571db4c30aa566dce06c42255368244649" onmouseover="return infraTooltipMostrar('Raphael Vasconcelos Amaral Rodrigues','RH: Afastamento do trabalho para estudo ou aperfeiçoamento profissional');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0229947/2023-53</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P50789569" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-50789569" name="ID-50789569"></a><input  class="infraCheckbox" id="chkRecebidosItem43" name="chkRecebidosItem43"  title="1410.01.0001012/2022-49" type="checkbox" value="50789569" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=50789569&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0334594223bd919f227017767f7a524287996237ac79a77a279cf27ae3991e97" onmouseover="return infraTooltipMostrar('Lucas Melo Franco Fainblat (Secult)','RH: Afastamento do trabalho para estudo ou aperfeiçoamento profissional');" onmouseout="return infraTooltipOcultar();" >1410.<wbr />01.<wbr />0001012/2022-49</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P82277306" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-82277306" name="ID-82277306"></a><input  class="infraCheckbox" id="chkRecebidosItem44" name="chkRecebidosItem44"  title="1500.01.0287150/2023-06" type="checkbox" value="82277306" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=82277306&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d6f7c575b90da5a7bd6af5bb2bfdb9a831c5020bb85e5d49d87c48239dd06a77" onmouseover="return infraTooltipMostrar('Material 20 anos SEPLAG - Coffee Break','Aquisição - Compra');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0287150/2023-06</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P861978661" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-861978661" name="ID-861978661"></a><input  class="infraCheckbox" id="chkRecebidosItem45" name="chkRecebidosItem45"  title="1230.01.0007186/2023-43" type="checkbox" value="861978661" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=861978661&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4754e1e10dd60a0cc9215ba26d5b3abbbf1aaaf34318d4f98eebd0fb92f8b28f" onmouseover="return infraTooltipMostrar('','Gestão Institucional: Comissões Técnicas. Conselhos. Grupos de Trabalho. Juntas. Comitês. Câmaras');" onmouseout="return infraTooltipOcultar();" >1230.<wbr />01.<wbr />0007186/2023-43</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P53017157" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-53017157" name="ID-53017157"></a><input  class="infraCheckbox" id="chkRecebidosItem46" name="chkRecebidosItem46"  title="1500.01.0072909/2022-18" type="checkbox" value="53017157" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=53017157&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=3729ccfc74a0c843b19640a91d8cd233783b0d6a2e56d5851de625d31ee80277" onmouseover="return infraTooltipMostrar('Contratação estagiária Augusta Cora Lamas Lopes','01484147618 em 10/05/2022 10:12');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a><a href="controlador.php?acao=andamento_marcador_gerenciar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=53017157&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a5dd50eee78724f14b194d0a1541ffa685b74c851a01847fab5d6c30784e0350" onmouseover="return infraTooltipMostrar('','RH');" onmouseout="return infraTooltipOcultar();"><img src="svg/marcador_verde.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=53017157&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=44ae868db41813b3d2317079c9bc1e3af65573e1c71885013a568cac03f17b85" onmouseover="return infraTooltipMostrar('Estagiária Augusta Cora Lamas Lopes - SEPLAG / DCSIMI','RH: Estagiário');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0072909/2022-18</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100003916&id_procedimento=53017157&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=61d510f6bb97605b962e85d84111f626433fcae4942d1b2718caae1e3165ca15" title="Atribuído para Amanda Dias da Silva Ferreira" class="ancoraSigla">09495087643</a>)</td>
+</tr>
+<tr id="P861663615" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-861663615" name="ID-861663615"></a><input  class="infraCheckbox" id="chkRecebidosItem47" name="chkRecebidosItem47"  title="1500.01.0403741/2023-87" type="checkbox" value="861663615" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=861663615&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=216298947d6e616de826eff7870f3e6461d541b43522a1e7bebeef5ba5de2bb1" onmouseover="return infraTooltipMostrar('Semana da Inovação ENAP 2023 Jose Banes','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0403741/2023-87</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P69425176" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-69425176" name="ID-69425176"></a><input  class="infraCheckbox" id="chkRecebidosItem48" name="chkRecebidosItem48"  title="2060.01.0000169/2023-56" type="checkbox" value="69425176" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=69425176&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=654f11f42ac09390671398460f504fa56cd230a2d61042bd70a90a050076db3f" onmouseover="return infraTooltipMostrar('ECS - 42 Csap _ Augusta Cora Lamas Lopes','RH: Estágio Curricular Obrigatório do Curso Superior de Administração Pública da FJP');" onmouseout="return infraTooltipOcultar();" >2060.<wbr />01.<wbr />0000169/2023-56</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P861829431" class="infraTrClara">
+<td align="center"><a id="lnkRecebidosID-861829431" name="ID-861829431"></a><input  class="infraCheckbox" id="chkRecebidosItem49" name="chkRecebidosItem49"  title="1500.01.0407131/2023-28" type="checkbox" value="861829431" onclick="infraSelecionarItens(this,'Recebidos');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=861829431&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=ac0599d91dcad06be2c732468ecb746305a16131029359de69db4b572ea1ab42" onmouseover="return infraTooltipMostrar('Patrick','RH: Exoneração ou Dispensa Ex Officio');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0407131/2023-28</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+</table>
+</div>
+
+<input type="hidden" id="hdnRecebidosNroItens" name="hdnRecebidosNroItens" value="50" />
+<input type="hidden" id="hdnRecebidosItemId" name="hdnRecebidosItemId" value="" />
+<input type="hidden" id="hdnRecebidosItens" name="hdnRecebidosItens" value="912619680,914392670,913405734,860455635,912862117,911978053,909414287,10833412,908970174,906213036,901600011,898888603,896691178,893476371,893846219,892920916,866330382,891462069,886446241,888268937,888908324,888194712,881179982,883556718,882483118,881465205,876246256,877120334,878657786,876404116,876089971,876368415,876231364,875935556,874597216,874927014,872541593,872551218,868652836,865499879,865779472,867063697,79121570,50789569,82277306,861978661,53017157,861663615,69425176,861829431" />
+<input type="hidden" id="hdnRecebidosItensHash" name="hdnRecebidosItensHash" value="e2fabb563c50e98802d561c0380f4cfded2e5e60896262b22132488af5c288c0" />
+<input type="hidden" id="hdnRecebidosItensSelecionados" name="hdnRecebidosItensSelecionados" value="" />
+
+<input type="hidden" id="hdnGeradosNroItens" name="hdnGeradosNroItens" value="36" />
+<input type="hidden" id="hdnGeradosItemId" name="hdnGeradosItemId" value="" />
+<input type="hidden" id="hdnGeradosItens" name="hdnGeradosItens" value="916072814,915480636,915267645,915814888,912914809,915441733,868453215,911816479,911416940,898962688,891246841,892815968,888637363,884712221,881197980,873729516,873526219,872908633,868598617,868485989,867479618,866010284,864874725,863439914,83124274,84745875,83897904,83140910,82600136,82777792,82777786,70685305,57407461,51009409,50894894,47755112" />
+<input type="hidden" id="hdnGeradosItensHash" name="hdnGeradosItensHash" value="35fc187fecf55b8e7afa455b75106030f038b0768773e625f16fac5b9cab26af" />
+<input type="hidden" id="hdnGeradosItensSelecionados" name="hdnGeradosItensSelecionados" value="" />
+
+<input type="hidden" id="hdnInfraSelecoes" name="hdnInfraSelecoes" value="Recebidos,Gerados" />
+<div id="divRecebidosAreaPaginacaoInferior" class="infraAreaPaginacao">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="selRecebidosPaginacaoInferior" name="selRecebidosPaginacaoInferior" onchange="infraAcaoPaginar('=',this.value,'Recebidos', null);" class="infraSelect" aria-label="Escolher Página" style="display:inline;">
+<option value="0" selected="selected" >1</option>
+<option value="1">2</option>
+<option value="2">3</option>
+</select>&nbsp;&nbsp;
+                    <a id="lnkRecebidosProximaPaginaInferior" 
+                        href="javascript:void(0);" 
+                        onclick="infraAcaoPaginar('+',0,'Recebidos', null);" 
+                        title="Próxima Página" 
+                        ><img src="/infra_css/svg/paginacao_proxima.svg" 
+                            title="Próxima Página" 
+                            alt="Próxima Página" 
+                            class="infraImg"/></a>&nbsp;&nbsp;
+
+&nbsp;                    <a id="lnkRecebidosUltimaPaginaInferior" 
+                        href="javascript:void(0);" 
+                        onclick="infraAcaoPaginar('=',2,'Recebidos', null);" 
+                        title="Última Página" 
+                        ><img src="/infra_css/svg/paginacao_ultima.svg" 
+                            title="Última Página" 
+                            alt="Última Página" 
+                            class="infraImg"/></a></div>
+
+<input type="hidden" id="hdnRecebidosPaginaAtual" name="hdnRecebidosPaginaAtual" value="0" />
+<input type="hidden" id="hdnRecebidosHashCriterios" name="hdnRecebidosHashCriterios" value="6e3e271f77fd677c8d9596d04e906f40" />
+  </div>
+  <div id="divGerados" class=" ml-0 pl-0  d-none d-md-block col-12 col-md-6">
+<div id="divGeradosAreaPaginacaoSuperior" class="infraAreaPaginacao">
+</div>
+<div id="divGeradosAreaTabela" class="infraAreaTabela" >
+<table id="tblProcessosGerados" width="100%" border="0" cellspacing="0" cellpadding="1" class="infraTable tabelaControle" summary="Tabela de Processos Gerados.">
+<caption class="infraCaption">36 registros:</caption><tr><th class="infraTh" width="5%" align="center"><a href="javascript:void(0);" id="lnkInfraCheck" onclick="infraSelecaoMultipla('Gerados');"><img src="/infra_css/svg/check.svg" id="imgGeradosCheck" title="Selecionar Tudo" alt="Selecionar Tudo" class="infraImg" /></a></th>
+<th class="infraTh" colspan="3">Gerados</th>
+</tr>
+<tr id="P916072814" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-916072814" name="ID-916072814"></a><input  class="infraCheckbox" id="chkGeradosItem0" name="chkGeradosItem0"  title="1500.01.0441862/2025-81" type="checkbox" value="916072814" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=916072814&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2dc26ccad45d949dc225d37475361bc6e0180493c30cfe73bfcc887f342a9ca3" onmouseover="return infraTooltipMostrar('TESTE - Joana - 123456-7','Comunicação: Interna');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0441862/2025-81</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P915480636" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-915480636" name="ID-915480636"></a><input  class="infraCheckbox" id="chkGeradosItem1" name="chkGeradosItem1"  title="1500.01.0431642/2025-56" type="checkbox" value="915480636" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=andamento_marcador_gerenciar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=915480636&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9d9f78d00c0c0dd1190e32b1a56c7708f798053e9b215a538d39b910a2c773c9" onmouseover="return infraTooltipMostrar('','Amália');" onmouseout="return infraTooltipOcultar();"><img src="svg/marcador_azul_ceu.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=915480636&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=73ef644a28d75ec3775c32701a1bcb683f33c61fda52eaac9c91844886cd5dd8" onmouseover="return infraTooltipMostrar('Ressarcimento Clarisse Semana de Inovação','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0431642/2025-56</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P915267645" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-915267645" name="ID-915267645"></a><input  class="infraCheckbox" id="chkGeradosItem2" name="chkGeradosItem2"  title="1500.01.0427181/2025-29" type="checkbox" value="915267645" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=andamento_marcador_gerenciar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=915267645&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0d0d38f829290505f93fa560526ec14ea0c9341a7ccf31d54081cecf1ac03cff" onmouseover="return infraTooltipMostrar('Aguardando assinaturas','Amália');" onmouseout="return infraTooltipOcultar();"><img src="svg/marcador_azul_ceu.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=915267645&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=358f4af790c643f127592ab32949caea14ea51dc8403a5f3a9709d383501e8da" onmouseover="return infraTooltipMostrar('Ressarcimento Augusta Cora SEMANA DA INOVAÇÃO','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0427181/2025-29</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P915814888" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-915814888" name="ID-915814888"></a><input  class="infraCheckbox" id="chkGeradosItem3" name="chkGeradosItem3"  title="1500.01.0437773/2025-98" type="checkbox" value="915814888" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=915814888&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=417e1d22b4c0cd927ca5fcdc8422de37439a18464487f14f3889616825a3fee3" onmouseover="return infraTooltipMostrar('Troca de vaga','RH: Estágio');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0437773/2025-98</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P912914809" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-912914809" name="ID-912914809"></a><input  class="infraCheckbox" id="chkGeradosItem4" name="chkGeradosItem4"  title="1500.01.0382794/2025-43" type="checkbox" value="912914809" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=912914809&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=ad5a8e7e7fed7bfb0b3b477e25e6bba7fabdfdd114d107ec09e8fd8a6be7c11f" onmouseover="return infraTooltipMostrar('MATEUS HENRIQUE RIBEIRO E SILVA - Centro de Automatização e Inteligência Artificial - Automatiza.MG','RH: Estágio');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0382794/2025-43</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100283952&id_procedimento=912914809&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=f6eab7758e840e01779228c2bc45c5138632b60811e78ef529b44fe1d8b7a568" title="Atribuído para Clarisse Fidelis Silva Campos" class="ancoraSigla">11726461637</a>)</td>
+</tr>
+<tr id="P915441733" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-915441733" name="ID-915441733"></a><input  class="infraCheckbox" id="chkGeradosItem5" name="chkGeradosItem5"  title="1500.01.0430717/2025-05" type="checkbox" value="915441733" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=915441733&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=f72802e58f0d0c0166ed1582955ae336c24b169eb5771a3c7ed30388582d827b" onmouseover="return infraTooltipMostrar('Ressarcimento Yan Semana da Inovação','Viagem: Prestação de Contas de Adiantamento');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0430717/2025-05</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P868453215" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-868453215" name="ID-868453215"></a><input  class="infraCheckbox" id="chkGeradosItem6" name="chkGeradosItem6"  title="1500.01.0092350/2024-69" type="checkbox" value="868453215" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=868453215&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=e03b57453b944fa5f6bc02993165a5b0d1ad2eea331baa16d867d7be75c9af2c" onmouseover="return infraTooltipMostrar('Solicitação de Administrador de Segurança','Gestão de TI: Solicitação de Administrador de Segurança');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0092350/2024-69</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P911816479" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-911816479" name="ID-911816479"></a><input  class="infraCheckbox" id="chkGeradosItem7" name="chkGeradosItem7"  title="1500.01.0362815/2025-59" type="checkbox" value="911816479" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=911816479&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=7863fcc1f262df466f3e22f1d97a4067a77b628fe11ae4700e03f8035dd33493" onmouseover="return infraTooltipMostrar('Revogação de Exercício| SEPLAG| Augusto César Guimarães de Souza-Masp 753134-6','RH: EPPGG - Movimentação e Exercício');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0362815/2025-59</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P911416940" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-911416940" name="ID-911416940"></a><input  class="infraCheckbox" id="chkGeradosItem8" name="chkGeradosItem8"  title="1500.01.0355633/2025-70" type="checkbox" value="911416940" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=911416940&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=7dd41d52342cb76ff17409e1c8caeaf726b952d8f764fb77242439fbd3845f2b" onmouseover="return infraTooltipMostrar('','Eventos: Promovidos por outras Instituições (Congressos. Conferências, Treinamentos, Workshops...)');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0355633/2025-70</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P898962688" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-898962688" name="ID-898962688"></a><input  class="infraCheckbox" id="chkGeradosItem9" name="chkGeradosItem9"  title="1500.01.0132669/2025-84" type="checkbox" value="898962688" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=898962688&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=92c1f9e0a6eba714b210e94ba5cfb1b33fa19799bd36c93b9c67896ed58eef91" onmouseover="return infraTooltipMostrar('Adesão RP','Licitação: Registro de Preços Realizado no SIRP');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0132669/2025-84</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P891246841" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-891246841" name="ID-891246841"></a><input  class="infraCheckbox" id="chkGeradosItem10" name="chkGeradosItem10"  title="1500.01.0694703/2024-43" type="checkbox" value="891246841" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=891246841&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=7652f8e05c45c11a1fd4ac65b97999c188cd53f022cac7f62f7f7cd8826ab91f" onmouseover="return infraTooltipMostrar('requerimento férias André Amorim','RH: Requerimento de Férias Regulamentares');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0694703/2024-43</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P892815968" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-892815968" name="ID-892815968"></a><input  class="infraCheckbox" id="chkGeradosItem11" name="chkGeradosItem11"  title="1500.01.0011813/2025-19" type="checkbox" value="892815968" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=892815968&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=311c87087f845ca4988f3a446ce1735c3522abf4b0e8698ee601dde1bd0b1f1f" onmouseover="return infraTooltipMostrar('','RH: Avaliação de Desempenho');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0011813/2025-19</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P888637363" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-888637363" name="ID-888637363"></a><input  class="infraCheckbox" id="chkGeradosItem12" name="chkGeradosItem12"  title="1500.01.0630808/2024-63" type="checkbox" value="888637363" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=888637363&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=48ae8c25b0697147bf782d8029574d6f5425cdfef5fbc949fd318af1bec63534" onmouseover="return infraTooltipMostrar('Marcação de férias regulamentares Augusta Cora','RH: Requerimento de Férias Regulamentares');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0630808/2024-63</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P884712221" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-884712221" name="ID-884712221"></a><input  class="infraCheckbox" id="chkGeradosItem13" name="chkGeradosItem13"  title="1500.01.0526461/2024-67" type="checkbox" value="884712221" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=884712221&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=7007cb25431b40c04d11fcfcb01fd61c1a38b905a540cf2963a14f41abff844c" onmouseover="return infraTooltipMostrar('Termo de Responsabilidade Yan Vieira do Carmo','08970323651 em 24/09/2024 13:30');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=884712221&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=da61d02b72c2477c7abc157b5307697c3489cad2275183a2687382377383a284" onmouseover="return infraTooltipMostrar('Termo de Responsabilidade Yan Vieira do Carmo','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0526461/2024-67</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P881197980" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-881197980" name="ID-881197980"></a><input  class="infraCheckbox" id="chkGeradosItem14" name="chkGeradosItem14"  title="1500.01.0427606/2024-03" type="checkbox" value="881197980" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=881197980&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2cb239a34d0ed1fbb92699f38ba68c64ec1cdf263f131405fcf57d2cb9cd45fb" onmouseover="return infraTooltipMostrar('Acesso a CAMG - servidora Augusta Cora Lamas Lopes','Controle de Portaria/Acesso');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0427606/2024-03</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100357551&id_procedimento=881197980&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a28f6f5e244ecca36ba6128a1c3b49d95f343937282e697a3f1eaefca82871b1" title="Atribuído para Augusta Cora Lamas Lopes" class="ancoraSigla">16161861607</a>)</td>
+</tr>
+<tr id="P873729516" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-873729516" name="ID-873729516"></a><input  class="infraCheckbox" id="chkGeradosItem15" name="chkGeradosItem15"  title="1500.01.0242014/2024-64" type="checkbox" value="873729516" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=873729516&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=ad73a3d724efe07fb285b35e4c0a3d494906cbf1ea56e7a9e1bd565cbd01ccd9" onmouseover="return infraTooltipMostrar('993.213.436-87 - &amp;lt;nome regional&amp;gt;','RH - Outros Direitos. Obrigações. Vantagens. Concessões: Auxílios');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0242014/2024-64</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P873526219" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-873526219" name="ID-873526219"></a><input  class="infraCheckbox" id="chkGeradosItem16" name="chkGeradosItem16"  title="1500.01.0236964/2024-32" type="checkbox" value="873526219" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=873526219&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=74949272fd52cf07dea5f354cb0306e0f818b40a23adf4fa81504c0d202fc17d" onmouseover="return infraTooltipMostrar('teste','RH: Afastamento COVID-19');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0236964/2024-32</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P872908633" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-872908633" name="ID-872908633"></a><input  class="infraCheckbox" id="chkGeradosItem17" name="chkGeradosItem17"  title="1500.01.0221244/2024-97" type="checkbox" value="872908633" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=872908633&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9b9366de3a9266c880de7c094cab53357c99b6a3db4862cfd07460882af9045e" onmouseover="return infraTooltipMostrar('','RH: Afastamento do trabalho para estudo ou aperfeiçoamento profissional');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0221244/2024-97</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P868598617" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-868598617" name="ID-868598617"></a><input  class="infraCheckbox" id="chkGeradosItem18" name="chkGeradosItem18"  title="1500.01.0096303/2024-38" type="checkbox" value="868598617" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=868598617&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2411d5ddb07b128c51e921701a31d3e66aaa1afac137ee7ecaab34ba0d392c21" onmouseover="return infraTooltipMostrar('','RH: Frequência');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0096303/2024-38</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P868485989" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-868485989" name="ID-868485989"></a><input  class="infraCheckbox" id="chkGeradosItem19" name="chkGeradosItem19"  title="1500.01.0093445/2024-89" type="checkbox" value="868485989" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=868485989&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=df7c4b1f837cd3b20db3f4ebae44e9a0d288d7eb573caeecea26fe2534ac0196" onmouseover="return infraTooltipMostrar('456-7','Comunicação: Interna');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0093445/2024-89</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P867479618" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-867479618" name="ID-867479618"></a><input  class="infraCheckbox" id="chkGeradosItem20" name="chkGeradosItem20"  title="1500.01.0062564/2024-64" type="checkbox" value="867479618" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=867479618&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=4ad87a79775cee443343f5f36da2dcb5f5ea7a20010a6663551bbc4770bbd307" onmouseover="return infraTooltipMostrar('','RH: Frequência');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0062564/2024-64</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P866010284" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-866010284" name="ID-866010284"></a><input  class="infraCheckbox" id="chkGeradosItem21" name="chkGeradosItem21"  title="1500.01.0028150/2024-79" type="checkbox" value="866010284" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=866010284&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=25a2595fcd9e9bd0e8fed00d9570d6f4d86bcb3821216e65a9bb013696a63a51" onmouseover="return infraTooltipMostrar('','AGE - Procedimento de Autocomposição: CPRAC');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0028150/2024-79</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100263138&id_procedimento=866010284&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=dae34b6be19cfb6759b91dad136b3ef9f3e1e05157f9ae0177e4543a9c113953" title="Atribuído para Yan Vieira do Carmo" class="ancoraSigla">09674316620</a>)</td>
+</tr>
+<tr id="P864874725" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-864874725" name="ID-864874725"></a><input  class="infraCheckbox" id="chkGeradosItem22" name="chkGeradosItem22"  title="1500.01.0002929/2024-09" type="checkbox" value="864874725" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=864874725&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0a1ee78c2c3859b84359551820aca65b2cb5ef6d04022a61c6d1e5b03af06846" onmouseover="return infraTooltipMostrar('','RH: Exoneração ou Dispensa a Pedido');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0002929/2024-09</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P863439914" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-863439914" name="ID-863439914"></a><input  class="infraCheckbox" id="chkGeradosItem23" name="chkGeradosItem23"  title="1500.01.0443047/2023-05" type="checkbox" value="863439914" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=863439914&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=32ba1f2e4b58d321ad93105140e386ecbcd19d9b0c76ab591874e137737cb595" onmouseover="return infraTooltipMostrar('GABRIEL DORNAS - 7522666','RH: Gozo de Férias Prêmio');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0443047/2023-05</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P83124274" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-83124274" name="ID-83124274"></a><input  class="infraCheckbox" id="chkGeradosItem24" name="chkGeradosItem24"  title="1500.01.0304061/2023-85" type="checkbox" value="83124274" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=83124274&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=b45e69f9917d3b86b62406c3cf4f15d14ea4f7f57a1b8c8582af0314feeadde6" onmouseover="return infraTooltipMostrar('Movimentação do servidor Gabriel Braico Dornas','RH: EPPGG - Movimentação e Exercício');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0304061/2023-85</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P84745875" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-84745875" name="ID-84745875"></a><input  class="infraCheckbox" id="chkGeradosItem25" name="chkGeradosItem25"  title="1500.01.0341732/2023-13" type="checkbox" value="84745875" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=84745875&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=13c9ad31dee1a2f67dcc8d8b31d3d01c9a62abd72b892bbb65720cad6805e479" onmouseover="return infraTooltipMostrar('','RH: Frequência');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0341732/2023-13</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P83897904" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-83897904" name="ID-83897904"></a><input  class="infraCheckbox" id="chkGeradosItem26" name="chkGeradosItem26"  title="1500.01.0321603/2023-05" type="checkbox" value="83897904" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=83897904&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=df238dd3d47e7a29c534562ecda08db2f646632f81b72094eaeba9cddcdd350e" onmouseover="return infraTooltipMostrar('Solicitação de crachá','Pessoal: Requisição de Servidor Externo');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0321603/2023-05</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P83140910" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-83140910" name="ID-83140910"></a><input  class="infraCheckbox" id="chkGeradosItem27" name="chkGeradosItem27"  title="1500.01.0304281/2023-62" type="checkbox" value="83140910" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=83140910&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=be5196046e0b4f388bc1c31ddbfa0ad008c8d50d97842e1ea014dda2ff89c468" onmouseover="return infraTooltipMostrar('Autorização para realização de viagem internacional Clarissa','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0304281/2023-62</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P82600136" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-82600136" name="ID-82600136"></a><input  class="infraCheckbox" id="chkGeradosItem28" name="chkGeradosItem28"  title="1500.01.0293418/2023-35" type="checkbox" value="82600136" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=82600136&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=6055fc9cdaecf7749f66da3f39d0b86fa77a4e586b2e3509be308531b6dcd152" onmouseover="return infraTooltipMostrar('Movimentação do servidor André Luiz Guimarães Amorim','08970323651 em 31/08/2023 23:57');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=82600136&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=a50debeb8c08928630333071531cd7c9dc06337189421cf711fd2334676e6cdf" onmouseover="return infraTooltipMostrar('Autorização de exercício | CGE &amp;gt; SEPLAG | André Luiz Guimarães Amorim 669550-6','RH: EPPGG - Movimentação e Exercício');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0293418/2023-35</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P82777792" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-82777792" name="ID-82777792"></a><input  class="infraCheckbox" id="chkGeradosItem29" name="chkGeradosItem29"  title="1500.01.0296984/2023-74" type="checkbox" value="82777792" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=82777792&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=c06d26583cc416603bab928d77c035ceaa411eac838c1b7e0683063970dc9f4a" onmouseover="return infraTooltipMostrar('XXVIII Congreso Internacional del CLAD Giovanna Schffer','Viagem a Serviço: Com ônus para a instituição');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0296984/2023-74</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P82777786" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-82777786" name="ID-82777786"></a><input  class="infraCheckbox" id="chkGeradosItem30" name="chkGeradosItem30"  title="1500.01.0296983/2023-04" type="checkbox" value="82777786" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="javascript:void(0);" onmouseover="return infraTooltipMostrar('Um documento foi incluído ou assinado neste processo');" onmouseout="return infraTooltipOcultar();"><img src="svg/exclamacao.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=82777786&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=12522221cf6a6d38f792e3bdd6f589408e29eaef0aad73a6314609598adbdb89" onmouseover="return infraTooltipMostrar('XXVIII Congreso Internacional del CLAD Clarissa Nascimento Duarte','Viagem a Serviço: Com ônus para a instituição');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0296983/2023-04</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P70685305" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-70685305" name="ID-70685305"></a><input  class="infraCheckbox" id="chkGeradosItem31" name="chkGeradosItem31"  title="1500.01.0050968/2023-43" type="checkbox" value="70685305" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=70685305&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=9524fa0cfbb3cd03e96d5491bbe01a6e8ffc0c7d9533e0f27c5c2f2d7ca88b25" onmouseover="return infraTooltipMostrar('Monitoramento dos indicadores da Ajuda de Custo - 1º bimestre 2023','01484147618 em 14/06/2023 16:04');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=70685305&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=ffbb81169ccae4ab6a1cf215d2fe8468545f24dfadfb59944b44ee52888e9f69" onmouseover="return infraTooltipMostrar('Monitoramento dos indicadores da Ajuda de Custo - 1º bimestre 2023','Pedidos, Oferecimentos e Informações Diversas');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0050968/2023-43</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+<tr id="P57407461" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-57407461" name="ID-57407461"></a><input  class="infraCheckbox" id="chkGeradosItem32" name="chkGeradosItem32"  title="1500.01.0134854/2022-74" type="checkbox" value="57407461" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=57407461&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=66b70a809b3c8607a396c82ffd2d0a3dc5217f6ae80eec024e2254183a43dca5" onmouseover="return infraTooltipMostrar('Exclusão Ipsemg Grécia','01484147618 em 21/07/2022 09:15');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a><a href="controlador.php?acao=andamento_marcador_gerenciar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=57407461&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=7e2e1518bd611aaca09d2320ef8c307fc99ce4aa75e4089a9dd8d9530fecf55c" onmouseover="return infraTooltipMostrar('','RH');" onmouseout="return infraTooltipOcultar();"><img src="svg/marcador_verde.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=57407461&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=2a673170853d3ccc2fd1bc75a45da3577a7fb16bcf78231f770e6b442f909569" onmouseover="return infraTooltipMostrar('Cancelamento','Assistência Médica IPSEMG');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0134854/2022-74</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100119003&id_procedimento=57407461&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=fa1fc1603ad0cbfd44069609a27ec71005de325961a7cf2bec2bca575a8fdc07" title="Atribuído para Grecia Mara Borges da Silva" class="ancoraSigla">05933317616</a>)</td>
+</tr>
+<tr id="P51009409" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-51009409" name="ID-51009409"></a><input  class="infraCheckbox" id="chkGeradosItem33" name="chkGeradosItem33"  title="1500.01.0053241/2022-76" type="checkbox" value="51009409" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=51009409&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=26ace9e320cce9e39c55df91c1a1953ff1207953c260357a2e31cb270de38502" onmouseover="return infraTooltipMostrar('Diploma de conclusão de curso de Administração Pública na Fundação João Pinheiro. Giovanna Nogueira Machado Schffer','01484147618 em 30/03/2022 16:27');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a><a href="controlador.php?acao=andamento_marcador_gerenciar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=51009409&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=0b19cc8983f8e0776dece179387a6ed1040b643e844ac600bbe881ecf2bfa7fc" onmouseover="return infraTooltipMostrar('','RH');" onmouseout="return infraTooltipOcultar();"><img src="svg/marcador_verde.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=51009409&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=788023ab2b019cfe6d4a541840c8d683ad5a302bdda0fbc09ff1f02f025abf85" onmouseover="return infraTooltipMostrar('Diploma de graduação CSAP - Giovanna Nogueira Machado Schffer','RH: Posse e Exercício - Cargo Efetivo');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0053241/2022-76</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100329789&id_procedimento=51009409&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=51713907bf79a6487c28bde2f2921c0dfa0aee4809773fceb2e922463d393b1d" title="Atribuído para Giovanna Nogueira Machado Schffer" class="ancoraSigla">13493699697</a>)</td>
+</tr>
+<tr id="P50894894" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-50894894" name="ID-50894894"></a><input  class="infraCheckbox" id="chkGeradosItem34" name="chkGeradosItem34"  title="1500.01.0052193/2022-48" type="checkbox" value="50894894" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=50894894&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=eaad6bb605818008a137a15aeefe30f2e828d6801944e1ce23342907d0e6bb96" onmouseover="return infraTooltipMostrar('Diploma de conclusão de curso de Administração Pública na Fundação João Pinheiro - Clarissa Nascimento Duarte','01484147618 em 29/03/2022 09:30');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao1.svg?11" class="imagemStatus" /></a><a href="controlador.php?acao=andamento_marcador_gerenciar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=50894894&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=86a1bc559c489c83ca516c8c6da304b36e4d0ed7a157ac68c2db9282df41a172" onmouseover="return infraTooltipMostrar('','RH');" onmouseout="return infraTooltipOcultar();"><img src="svg/marcador_verde.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=50894894&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=ebd838bac2182ecd4076b9f94906e437985b894ed7671a1aa808a5bddff9a737" onmouseover="return infraTooltipMostrar('Diploma Graduação','RH: Posse e Exercício - Cargo Efetivo');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0052193/2022-48</a></td>
+<td align="center" width="10%">(<a href="controlador.php?acao=procedimento_atribuicao_listar&acao_retorno=procedimento_controlar&id_usuario_atribuicao=100338846&id_procedimento=50894894&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=507b00c2f11b1cbb0a4133c73f81e3b6d51e31c0678601cdc4c5c7e762b1a4f2" title="Atribuído para Clarissa Nascimento Duarte" class="ancoraSigla">10186793677</a>)</td>
+</tr>
+<tr id="P47755112" class="infraTrClara">
+<td align="center"><a id="lnkGeradosID-47755112" name="ID-47755112"></a><input  class="infraCheckbox" id="chkGeradosItem35" name="chkGeradosItem35"  title="1500.01.0016452/2022-02" type="checkbox" value="47755112" onclick="infraSelecionarItens(this,'Gerados');"/></td>
+<td align="center" width="20%"><a href="controlador.php?acao=anotacao_registrar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_protocolo=47755112&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=256c983a667ec4a58a235d90372c57dc85860b645ff4ca5facf427c0290c0c8a" onmouseover="return infraTooltipMostrar('Requerimentos de serviço remoto por suspeita/diagnostico de Covid, sintomas gripais e contato com infectado.\n\nTEM QUE ENVIAR PRO RH?','01484147618 em 29/03/2022 09:33');" onmouseout="return infraTooltipOcultar();"><img src="svg/anotacao2.svg?11" class="imagemStatus" /></a><a href="controlador.php?acao=andamento_marcador_gerenciar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=47755112&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=d1242a75e2afa878cf1a873fd86cf65096d8098d26b4d7324e31ff1b28985635" onmouseover="return infraTooltipMostrar('','RH');" onmouseout="return infraTooltipOcultar();"><img src="svg/marcador_verde.svg?11" class="imagemStatus" /></a></td>
+<td align="center"><a class="processoVisualizado" href="controlador.php?acao=procedimento_trabalhar&acao_origem=procedimento_controlar&acao_retorno=procedimento_controlar&id_procedimento=47755112&infra_sistema=100000100&infra_unidade_atual=110000248&infra_hash=dd4abe8f13076771424cf36219dc6ee5332a73024fdd6761de050355dd85e477" onmouseover="return infraTooltipMostrar('Requerimentos conforme Orientação de Serviço SEPLAG/SUGESP n.º 01/2022','RH: Afastamento COVID-19');" onmouseout="return infraTooltipOcultar();" >1500.<wbr />01.<wbr />0016452/2022-02</a></td>
+<td align="center" width="10%">&nbsp;</td>
+</tr>
+</table>
+</div>
+<div id="divGeradosAreaPaginacaoInferior" class="infraAreaPaginacao">
+</div>
+
+<input type="hidden" id="hdnGeradosPaginaAtual" name="hdnGeradosPaginaAtual" value="0" />
+<input type="hidden" id="hdnGeradosHashCriterios" name="hdnGeradosHashCriterios" value="31d09d2f7c64deb51598f4542d94af3e" />
+  </div>
+</div>
+        <input type="hidden" id="hdnTipoVisualizacao" name="hdnTipoVisualizacao" value="R" />
+        <input type="hidden" id="hdnExibirRecebidos" name="hdnExibirRecebidos" value="false" />
+        <input type="hidden" id="hdnExibirGerados" name="hdnExibirGerados" value="false" />
+        <input type="hidden" id="hdnMeusProcessos" name="hdnMeusProcessos" value="T" />
+        <input type="hidden" id="hdnIdBloco" name="hdnIdBloco" value="" />
+        <input type="text" id="txtBloco" name="txtBloco" value="" style="display:none" />
+        <input type="hidden" id="hdnIdSigilosos" value="" />
+        <input type="hidden" id="hdnIdComMarcador" value="10833412,53017157,915480636,915267645,57407461,51009409,50894894,47755112" />
+        <input type="hidden" id="hdnIdMarcador110000248" name="hdnIdMarcador110000248" value="" />
+        <input type="hidden" id="hdnIdTipoProcedimento110000248" name="hdnIdTipoProcedimento110000248" value="" />
+        <input type="hidden" id="hdnFlagControleProcessos" name="hdnFlagControleProcessos" value="1" />
+    </div>
+</form>
+
+<script>
+    divInfraMoverTopo = document.getElementById("divTabelaProcesso");
+</script>
+</div>
+</div>
+</div>
+<input type="hidden" id="hdnInfraPrefixoCookie" name="hdnInfraPrefixoCookie" value="GOVMG_SEI_07300016600" />
+<div id="infraDivImpressao" class="infraImpressao"></div>
+<div id="infraDivBootstrap-xs" class="d-none d-xs-block"></div>
+<div id="infraDivBootstrap-sm" class="d-none d-sm-block"></div>
+<div id="infraDivBootstrap-md" class="d-none d-md-block"></div>
+<div id="infraDivBootstrap-lg" class="d-none d-lg-block"></div>
+</body>
+</html>
