@@ -1,3 +1,23 @@
+# Runtime artifacts and sensitive dumps
+/data/
+!/data/.gitkeep
+/pdfs/
+!/pdfs/.gitkeep
+/saida/
+!/saida/.gitkeep
+
+# HTML dumps generated during scraping/debug
+/processo_*.html
+/controle_pagina_*.html
+/login.html
+/gerar_pdf_form.html
+/processo_iframe.html
+/processo_pdf_intermediario.html
+
+# Environment/local tooling
+.env
+.venv/
+__pycache__/
 # Python-generated files
 __pycache__/
 *.py[oc]
@@ -8,3 +28,14 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Environment variables
+.env
+
+# Arquivos temporários gerados durante execução
+*.html
+*.pdf
+*.csv
+
+# Exceções: manter documentação HTML se houver
+!docs/**/*.html
