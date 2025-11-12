@@ -2,6 +2,10 @@ class SEIError(Exception):
     """Exceção base para erros do SEI."""
 
 
+class SEIConfigError(SEIError):
+    """Erro relacionado à configuração do cliente SEI."""
+
+
 class SEILoginError(SEIError):
     """Erro relacionado ao login no SEI."""
 

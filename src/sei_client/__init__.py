@@ -2,6 +2,7 @@
 
 from .client import SeiClient, create_client
 from .config import Settings, load_settings
+from .exceptions import SEIConfigError
 from .models import (
     Documento,
     EnrichmentOptions,
@@ -18,6 +19,7 @@ __all__ = [
     "create_client",
     "Settings",
     "load_settings",
+    "SEIConfigError",
     "Documento",
     "Processo",
     "FilterOptions",

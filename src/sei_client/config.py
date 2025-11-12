@@ -10,6 +10,8 @@ from typing import Mapping, Optional
 
 from dotenv import load_dotenv
 
+from .exceptions import SEIConfigError
+
 load_dotenv()
 
 DEFAULT_BASE_URL = "https://www.sei.mg.gov.br"
@@ -34,9 +36,10 @@ def _str_to_bool(value: Optional[str]) -> Optional[bool]:
 class Settings:
     """Representa a configuração de execução do cliente SEI."""
 
+    orgao_value: str = field()
+    unidade_value: str = field()
     base_url: str = DEFAULT_BASE_URL
     login_path: str = DEFAULT_LOGIN_PATH
-    orgao_value: str = field(default_factory=lambda: os.environ.get("SEI_ORGAO", "28"))
     data_dir: Path = field(default_factory=lambda: Path(os.environ.get("SEI_DATA_DIR", "data")))
     save_debug_html: bool = field(default_factory=lambda: _str_to_bool(os.environ.get("SEI_SAVE_DEBUG_HTML")) is True)
     debug_enabled: bool = field(default_factory=lambda: _str_to_bool(os.environ.get("SEI_DEBUG")) is True)
@@ -56,12 +59,49 @@ class Settings:
         """Caminho padrão do arquivo JSON com histórico de processos."""
         return self.data_dir / "historico_processos.json"
 
+    @property
+    def unidade_alvo(self) -> str:
+        """Unidade SEI que deve ficar ativa após o login."""
+        unidade_norm = self.unidade_value.strip()
+        return unidade_norm
+
 
 def load_settings(overrides: Optional[Mapping[str, object]] = None) -> Settings:
-    """Carrega configurações a partir de variáveis de ambiente com possíveis sobrescritas."""
-    base = Settings()
+    """
+    Carrega configurações a partir de variáveis de ambiente com possíveis sobrescritas.
+    
+    Raises:
+        SEIConfigError: Se SEI_ORGAO ou SEI_UNIDADE não estiverem definidas.
+    """
+    # Valida variáveis obrigatórias
+    orgao_value = os.environ.get("SEI_ORGAO")
+    unidade_value = os.environ.get("SEI_UNIDADE")
+    
+    if not orgao_value or not orgao_value.strip():
+        raise SEIConfigError(
+            "Variável de ambiente SEI_ORGAO é obrigatória. "
+            "Defina-a com o código do órgão (ex: SEI_ORGAO=28)."
+        )
+    
+    if not unidade_value or not unidade_value.strip():
+        raise SEIConfigError(
+            "Variável de ambiente SEI_UNIDADE é obrigatória. "
+            "Defina-a com o nome da unidade SEI desejada (ex: SEI_UNIDADE=SEPLAG/AUTOMATIZAMG)."
+        )
+    
+    # Aplica overrides se fornecidos
+    if overrides:
+        orgao_value = str(overrides.get("orgao_value", orgao_value))
+        unidade_value = str(overrides.get("unidade_value", unidade_value))
+    
+    base = Settings(
+        orgao_value=orgao_value.strip(),
+        unidade_value=unidade_value.strip(),
+    )
+    
     if not overrides:
         return base
+    
     data = asdict(base)
     data.update(overrides)
     return Settings(**data)  # type: ignore[arg-type]

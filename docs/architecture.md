@@ -25,7 +25,7 @@ O projeto adota uma arquitetura modular em torno do pacote `sei_client`, que enc
 |---------------------|---------------------------------------------------------------------------------------------------|
 | `config.py`         | Carrega variáveis de ambiente, diretórios padrão e configura logging.                             |
 | `http.py`           | Cria sessões `requests`, monta cabeçalhos e lida com salvamento condicional de HTML para debug.   |
-| `auth.py`           | Fluxo de login e abertura da página de controle de processos.                                     |
+| `auth.py`           | Fluxo de login, verificação/troca automática de unidade SEI e abertura da página de controle de processos. |
 | `processes.py`      | Extração e paginação de processos, filtros e abertura de páginas individuais.                     |
 | `documents.py`      | Parsing da árvore `ifrArvore`, coleta de metadados de documentos e assinaturas.                   |
 | `pdf.py`            | Rotinas de geração e download de PDFs (sequencial ou paralelo).                                   |
@@ -38,6 +38,7 @@ O projeto adota uma arquitetura modular em torno do pacote `sei_client`, que enc
 
 1. **Autenticação**
    - `SeiClient.login()` → `auth.login_sei()` garante sessão autenticada e obtém HTML de controle.
+   - Se `SEI_UNIDADE` estiver configurada, `auth.obter_unidade_atual()` verifica a unidade atual e, se diferente, `auth.selecionar_unidade_sei()` realiza a troca automática antes de prosseguir.
 
 2. **Coleta de processos**
    - `SeiClient.collect_processes()` usa `processes.coletar_processos()` para aplicar filtros e paginação.

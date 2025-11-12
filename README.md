@@ -21,20 +21,26 @@ Projeto para interagir com o sistema SEI (Sistema Eletrônico de Informações) 
 
    **Opção 1: Usando arquivo .env (Recomendado)**
    
-   Crie o arquivo `.env` na raiz do projeto e preencha com suas credenciais:
+   Copie o arquivo de exemplo e preencha com suas credenciais:
    ```bash
-   # Abra o arquivo .env em um editor
+   # Copie o arquivo de exemplo
+   cp .env.example .env
+   
+   # Edite o arquivo .env com suas credenciais
    nano .env  # ou use seu editor preferido
    ```
    
-   Preencha os valores:
+   Ou crie o arquivo `.env` manualmente na raiz do projeto com as variáveis obrigatórias:
    ```env
    SEI_USER=seu_login_aqui
    SEI_PASS=sua_senha_aqui
+   SEI_ORGAO=28  # obrigatório - código do órgão
+   SEI_UNIDADE=SEPLAG/AUTOMATIZAMG  # obrigatório - nome da unidade SEI
    SEI_DEBUG=1  # opcional, para logs detalhados
    SEI_SAVE_DEBUG_HTML=1  # opcional, salva HTMLs para debug
-   SEI_ORGAO=28  # opcional, default é 28 (SEPLAG)
    ```
+   
+   **Nota:** O arquivo `.env.example` contém todas as variáveis disponíveis com comentários explicativos.
 
    **Opção 2: Variáveis de ambiente no terminal**
    
@@ -42,18 +48,20 @@ Projeto para interagir com o sistema SEI (Sistema Eletrônico de Informações) 
    ```bash
    export SEI_USER="SEU_LOGIN"
    export SEI_PASS="SUA_SENHA"
+   export SEI_ORGAO="28"  # obrigatório
+   export SEI_UNIDADE="SEPLAG/AUTOMATIZAMG"  # obrigatório
    export SEI_DEBUG="1"  # opcional
    export SEI_SAVE_DEBUG_HTML="1"  # opcional
-   export SEI_ORGAO="28"  # opcional
    ```
    
    No Windows (PowerShell):
    ```powershell
    $env:SEI_USER="SEU_LOGIN"
    $env:SEI_PASS="SUA_SENHA"
+   $env:SEI_ORGAO="28"  # obrigatório
+   $env:SEI_UNIDADE="SEPLAG/AUTOMATIZAMG"  # obrigatório
    $env:SEI_DEBUG="1"  # opcional
    $env:SEI_SAVE_DEBUG_HTML="1"  # opcional
-   $env:SEI_ORGAO="28"  # opcional
    ```
 
 3. **Executar o script principal:**
@@ -88,7 +96,18 @@ Script refatorado e modularizado que oferece:
 #### 1. **Login Automatizado**
 - Autenticação no SEI com validação robusta
 - Verificação de cookies de sessão
+- **Troca automática de unidade SEI**: O sistema sempre verifica a unidade atual após o login e, se diferente da configurada em `SEI_UNIDADE` (obrigatória), troca automaticamente para a unidade desejada
 - Tratamento de erros (credenciais inválidas, bloqueios, etc.)
+
+**Como funciona a troca automática de unidade:**
+- Após o login bem-sucedido, o sistema verifica qual unidade SEI está ativa
+- Como `SEI_UNIDADE` é obrigatória, o sistema sempre:
+  1. Carrega a página de seleção de unidades disponíveis
+  2. Localiza a unidade desejada na lista
+  3. Seleciona e confirma a troca automaticamente
+  4. Recarrega a página de controle para garantir estado consistente
+- Se a troca falhar (unidade não encontrada, erro de rede, etc.), o sistema continua com a unidade atual e registra um aviso nos logs
+- A comparação de nomes de unidade é case-insensitive e tolerante a espaços extras
 
 #### 2. **Extração Completa de Processos**
 Extrai processos de ambas as categorias (**Recebidos** e **Gerados**) com metadados completos:
@@ -230,9 +249,10 @@ uv pip list
 |----------|-----------|-------------|---------|
 | `SEI_USER` | Login do SEI | ✅ Sim | - |
 | `SEI_PASS` | Senha do SEI | ✅ Sim | - |
+| `SEI_ORGAO` | Código do órgão | ✅ Sim | - |
+| `SEI_UNIDADE` | Nome da unidade SEI desejada (ex: "SEPLAG/AUTOMATIZAMG") | ✅ Sim | - |
 | `SEI_DEBUG` | Ativa logs detalhados (1/true/yes) | ❌ Não | - |
 | `SEI_SAVE_DEBUG_HTML` | Salva HTMLs para debug (1/true/yes) | ❌ Não | - |
-| `SEI_ORGAO` | Código do órgão | ❌ Não | "28" (SEPLAG) |
 | `SEI_SIGLA_SISTEMA` | Sigla do sistema (para API SOAP) | ❌ Não | - |
 | `SEI_IDENT_SERVICO` | Identificador do serviço (para API SOAP) | ❌ Não | - |
 | `SEI_FILTRO_VISUALIZACAO` | `visualizados` ou `nao_visualizados` | ❌ Não | - |
@@ -267,20 +287,41 @@ uv pip list
 ### Uso Básico
 
 ```bash
-# 1. Configure as variáveis de ambiente
+# 1. Configure as variáveis de ambiente obrigatórias
 export SEI_USER="seu_login"
 export SEI_PASS="sua_senha"
+export SEI_ORGAO="28"  # obrigatório
+export SEI_UNIDADE="SEPLAG/AUTOMATIZAMG"  # obrigatório
 
 # 2. Execute o script
 uv run acessar_processos_sei.py
 ```
 
+### Uso com Troca Automática de Unidade
+
+```bash
+# Configure todas as variáveis obrigatórias
+export SEI_USER="seu_login"
+export SEI_PASS="sua_senha"
+export SEI_ORGAO="28"  # obrigatório
+export SEI_UNIDADE="SEPLAG/AUTOMATIZAMG"  # obrigatório - nome exato da unidade conforme aparece no SEI
+
+# Execute o script - a troca será feita automaticamente se necessário
+uv run acessar_processos_sei.py
+```
+
+**Nota:** O nome da unidade deve corresponder exatamente ao que aparece no sistema SEI (case-insensitive). Para descobrir o nome exato, você pode:
+1. Fazer login manualmente no SEI
+2. Clicar no link de unidade no topo da página
+3. Verificar o nome exato na lista de unidades disponíveis
+
 O script irá:
 1. Fazer login no SEI
-2. Listar todos os processos (Recebidos e Gerados)
-3. Exibir informações sobre processos não visualizados
-4. Gerar PDF do primeiro processo da lista
-5. Salvar o PDF com nome baseado no número do processo
+2. Verificar e trocar automaticamente para a unidade SEI configurada em `SEI_UNIDADE` (obrigatória)
+3. Listar todos os processos (Recebidos e Gerados)
+4. Exibir informações sobre processos não visualizados
+5. Gerar PDF do primeiro processo da lista
+6. Salvar o PDF com nome baseado no número do processo
 
 ### Saída Esperada
 
@@ -288,7 +329,12 @@ O script irá:
 10:30:15 [INFO] Abrindo página de login…
 10:30:16 [INFO] Enviando POST de login…
 10:30:17 [INFO] Autenticado com sucesso.
-10:30:18 [INFO] Acessando controle de processos: ...
+10:30:17 [INFO] Acessando controle de processos: ...
+10:30:17 [INFO] Unidade SEI atual: FHEMIG/DIRASS/GEPI/CIP/CFA
+10:30:17 [INFO] Unidade SEI atual (FHEMIG/DIRASS/GEPI/CIP/CFA) difere da desejada (SEPLAG/AUTOMATIZAMG). Iniciando troca...
+10:30:17 [INFO] Carregando página de seleção de unidades: ...
+10:30:17 [INFO] Selecionando unidade SEI: SEPLAG/AUTOMATIZAMG (ID: 110000248)
+10:30:18 [INFO] Unidade SEI alterada com sucesso para: SEPLAG/AUTOMATIZAMG
 10:30:19 [INFO] Total de processos extraídos: 105 (70 Recebidos, 35 Gerados)
 10:30:19 [INFO] Processos não visualizados: 15
 10:30:19 [INFO]   - 1500.01.0310980/2025-88 (Recebidos, Não Visualizado)
