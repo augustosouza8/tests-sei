@@ -1,4 +1,4 @@
-# Tests API SEI
+# Tests SEI
 
 Projeto para interagir com o sistema SEI (Sistema Eletrônico de Informações) do Governo de Minas Gerais.
 
